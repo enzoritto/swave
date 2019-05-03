@@ -1,0 +1,24 @@
+{
+  "name": "awesome-band",
+  "version": "1.0.0",
+  "description": "A music creation webapp",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^6.1.4"
+  },
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnzoCranford/awesome-band.git"
+  },
+  "author": "Enzo Cranford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EnzoCranford/awesome-band/issues"
+  },
+  "homepage": "https://github.com/EnzoCranford/awesome-band#readme"
+}
