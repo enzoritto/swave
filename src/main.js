@@ -12,11 +12,23 @@ function init () {
   circle.addEventListener('click', circleClick);
 }
 
-let sound = new Howl({
-  src: ['assets/guitar.wav'],
-  loop: true,
-  autoplay: true
-});
+function metronome (bpm, bpb) {
+  let counter = 0;
+  setInterval(() => {
+    counter++;
+    if (counter % bpb) {
+      tick.play();
+    } else {
+      tock.play();
+    }
+  }, 60000 / bpm);
+}
+
+const guitar = new Howl({ src: ['assets/guitar.wav'], loop: true });
+const tick = new Howl({ src: ['assets/tick.wav'] });
+const tock = new Howl({ src: ['assets/tock.wav'] });
 
 function circleClick (event) {
+  metronome(70, 4);
+  guitar.play();
 }
