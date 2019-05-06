@@ -13,9 +13,10 @@ function init () {
 }
 
 let sound = new Howl({
-  src: ['assets/sound.wav']
+  src: ['assets/guitar.wav'],
+  loop: true,
+  autoplay: true
 });
 
 function circleClick (event) {
-  sound.play();
 }
