@@ -15,24 +15,30 @@ function init () {
 }
 
 let metronomeInterval;
+let counter = 0;
+
 const metronome = {
   start: (bpm, bpb) => {
-    let counter = 0;
+    metronome.tick(bpm, bpb);
     metronomeInterval = setInterval(() => {
-      counter++;
-      document.getElementById('metronome').innerHTML = counter;
-      document.getElementById('metronome').className = 'metronome-' + counter;
-      if (counter == 1) {
-        tock.play();
-      } else {
-        tick.play();
-      }
-      if (counter % bpb == 0) {
-        counter = 0;
-      }
+      metronome.tick(bpm, bpb);
     }, 60000 / bpm);
   },
+  tick: (bpm, bpb) => {
+    counter++;
+    document.getElementById('metronome').innerHTML = counter;
+    document.getElementById('metronome').className = 'metronome-' + counter;
+    if (counter == 1) {
+      tock.play();
+    } else {
+      tick.play();
+    }
+    if (counter % bpb == 0) {
+      counter = 0;
+    }
+  },
   stop: () => {
+    counter = 0;
     clearInterval(metronomeInterval);
   }
 }
