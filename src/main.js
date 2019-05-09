@@ -20,10 +20,15 @@ const metronome = {
     let counter = 0;
     metronomeInterval = setInterval(() => {
       counter++;
-      if (counter % bpb) {
-        tick.play();
-      } else {
+      document.getElementById('metronome').innerHTML = counter;
+      document.getElementById('metronome').className = 'metronome-' + counter;
+      if (counter == 1) {
         tock.play();
+      } else {
+        tick.play();
+      }
+      if (counter % bpb == 0) {
+        counter = 0;
       }
     }, 60000 / bpm);
   },
