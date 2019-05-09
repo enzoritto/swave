@@ -5,9 +5,9 @@ function init () {
   let circle = new createjs.Shape();
 
   circle.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
-  circle.x = 100;
-  circle.y = 100;
 
+  stage.x = canvas.width / 2;
+  stage.y = canvas.height / 2;
   stage.addChild(circle);
   stage.update();
 
