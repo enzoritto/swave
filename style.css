@@ -44,10 +44,29 @@ body {
   width: 4rem;
   height: 4rem;
   color: black;
-  border: 1rem solid black;
+  border: 1rem solid #ececec;
   border-radius: 50%;
   font-size: 3rem;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   text-align: center;
+}
+
+.metronome-1 {
+  border-top: 1rem solid black !important;
+}
+
+.metronome-2 {
+  border-top: 1rem solid black !important;
+  border-right: 1rem solid black !important;
+}
+
+.metronome-3 {
+  border-top: 1rem solid black !important;
+  border-right: 1rem solid black !important;
+  border-bottom: 1rem solid black !important;
+}
+
+.metronome-4 {
+  border: 1rem solid black !important;
 }
