@@ -1,3 +1,5 @@
+let isPaused = true;
+
 function init () {
   let stage = new createjs.Stage('canvas');
   let circle = new createjs.Shape();
@@ -9,26 +11,39 @@ function init () {
   stage.addChild(circle);
   stage.update();
 
-  circle.addEventListener('click', circleClick);
+  document.getElementById('play-button').addEventListener('click', playPauseClicked);
 }
 
-function metronome (bpm, bpb) {
-  let counter = 0;
-  setInterval(() => {
-    counter++;
-    if (counter % bpb) {
-      tick.play();
-    } else {
-      tock.play();
-    }
-  }, 60000 / bpm);
+let metronomeInterval;
+const metronome = {
+  start: (bpm, bpb) => {
+    let counter = 0;
+    metronomeInterval = setInterval(() => {
+      counter++;
+      if (counter % bpb) {
+        tick.play();
+      } else {
+        tock.play();
+      }
+    }, 60000 / bpm);
+  },
+  stop: () => {
+    clearInterval(metronomeInterval);
+  }
 }
 
 const guitar = new Howl({ src: ['assets/guitar.wav'], loop: true });
 const tick = new Howl({ src: ['assets/tick.wav'] });
 const tock = new Howl({ src: ['assets/tock.wav'] });
 
-function circleClick (event) {
-  metronome(70, 4);
-  guitar.play();
+function playPauseClicked (event) {
+  if (isPaused) {
+    isPaused = false;
+    metronome.start(70, 4);
+    guitar.play();
+  } else {
+    isPaused = true;
+    metronome.stop();
+    guitar.stop();
+  }
 }
