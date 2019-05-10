@@ -1,4 +1,7 @@
 let isPaused = true;
+let metronomeInterval;
+let counter = 0;
+let metronomeElement;
 
 function init () {
   let stage = new createjs.Stage('canvas');
@@ -12,49 +15,49 @@ function init () {
   stage.update();
 
   document.getElementById('play-button').addEventListener('click', playPauseClicked);
+  metronomeElement = document.getElementById('metronome');
 }
 
-let metronomeInterval;
-let counter = 0;
-
 const metronome = {
-  start: (bpm, bpb) => {
-    metronome.tick(bpm, bpb);
+  start(bpm, bpb) {
+    this.tick(bpm, bpb);
     metronomeInterval = setInterval(() => {
-      metronome.tick(bpm, bpb);
+      this.tick(bpm, bpb);
     }, 60000 / bpm);
   },
-  tick: (bpm, bpb) => {
+  tick(bpm, bpb) {
     counter++;
-    document.getElementById('metronome').innerHTML = counter;
-    document.getElementById('metronome').className = 'metronome-' + counter;
+    metronomeElement.innerHTML = counter;
+    metronomeElement.className = 'metronome-' + counter;
     if (counter == 1) {
-      tock.play();
+      sounds.tock.play();
     } else {
-      tick.play();
+      sounds.tick.play();
     }
     if (counter % bpb == 0) {
       counter = 0;
     }
   },
-  stop: () => {
+  stop() {
     counter = 0;
     clearInterval(metronomeInterval);
   }
 }
 
-const guitar = new Howl({ src: ['assets/guitar.wav'], loop: true });
-const tick = new Howl({ src: ['assets/tick.wav'] });
-const tock = new Howl({ src: ['assets/tock.wav'] });
+const sounds = {
+  guitar: new Howl({ src: ['assets/guitar.wav'], loop: true }),
+  tick: new Howl({ src: ['assets/tick.wav'] }),
+  tock: new Howl({ src: ['assets/tock.wav'] }),
+}
 
 function playPauseClicked (event) {
   if (isPaused) {
     isPaused = false;
     metronome.start(70, 4);
-    guitar.play();
+    sounds.guitar.play();
   } else {
     isPaused = true;
     metronome.stop();
-    guitar.stop();
+    sounds.guitar.stop();
   }
 }
