@@ -2,3 +2,4 @@ idea.md
 node_modules
 tests_build
 dist
+tests_build/
