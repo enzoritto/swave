@@ -4,18 +4,23 @@ let counter = 0;
 let metronomeElement;
 
 function init () {
-  let stage = new createjs.Stage('canvas');
-  let circle = new createjs.Shape();
-
-  circle.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
-
+  const stage = new createjs.Stage('canvas');
   stage.x = canvas.width / 2;
   stage.y = canvas.height / 2;
-  stage.addChild(circle);
+
+  const instrument = createInstrument();
+
+  stage.addChild(instrument);
   stage.update();
 
   document.getElementById('play-button').addEventListener('click', playPauseClicked);
   metronomeElement = document.getElementById('metronome');
+}
+
+function createInstrument () {
+  const instrument = new createjs.Shape();
+  instrument.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
+  return instrument;
 }
 
 const metronome = {
