@@ -1,3 +1,5 @@
+import Instrument from './instrument';
+
 let isPaused = true;
 let metronomeInterval;
 let counter = 0;
@@ -5,22 +7,17 @@ let metronomeElement;
 
 function init () {
   const stage = new createjs.Stage('canvas');
+  const canvas = document.getElementById('canvas');
   stage.x = canvas.width / 2;
   stage.y = canvas.height / 2;
 
-  const instrument = createInstrument();
+  const instrument = new Instrument().create();
 
   stage.addChild(instrument);
   stage.update();
 
   document.getElementById('play-button').addEventListener('click', playPauseClicked);
   metronomeElement = document.getElementById('metronome');
-}
-
-function createInstrument () {
-  const instrument = new createjs.Shape();
-  instrument.graphics.beginFill('DeepSkyBlue').drawCircle(0, 0, 50);
-  return instrument;
 }
 
 const metronome = {
@@ -66,3 +63,5 @@ function playPauseClicked (event) {
     sounds.guitar.stop();
   }
 }
+
+window.onload = init;
