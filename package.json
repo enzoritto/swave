@@ -11,7 +11,7 @@
     "webpack-cli": "^3.3.2"
   },
   "scripts": {
-    "test": "mocha tests",
+    "test": "webpack --mode=development --config webpack.config-test.js && mocha tests_build/bundle.js",
     "build": "webpack --mode=production"
   },
   "repository": {
