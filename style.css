@@ -13,6 +13,19 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+#version {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+
+  margin: 0;
+
+  color: #F2F2F2;
+
+  user-select: none;
+  -moz-user-select: none;
+}
+
 #canvas {
   display: block;
   margin: 10vh auto 0 auto;
