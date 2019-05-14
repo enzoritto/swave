@@ -12,9 +12,18 @@
   <body onload="init();">
     <canvas id="canvas" width="900" height="500"></canvas>
     <div id="toolbar">
-      <button class="play button"><i class="material-icons">play_arrow</i></button>
-      <button class="pause button"><i class="material-icons">pause</i></button>
-      <button class="stop button"><i class="material-icons">stop</i></button>
+      <div>
+        <label for="bpm-input">BPM</label>
+        <input id="bpm-input" name="bpm-input" value="70"></input>
+      </div>
+      <div>
+        <button class="play button"><i class="material-icons">play_arrow</i></button>
+        <button class="pause button"><i class="material-icons">pause</i></button>
+        <button class="stop button"><i class="material-icons">stop</i></button>
+      </div>
+      <div>
+        <button class="settings button"><i class="material-icons">settings</i></button>
+      </div>
     </div>
     <div id="metronome">0</div>
   </body>
