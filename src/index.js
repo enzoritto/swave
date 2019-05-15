@@ -15,8 +15,8 @@ function init () {
   stage.x = canvas.width / 2;
   stage.y = canvas.height / 2;
 
-  stage.addChild(piano.shape('DeepSkyBlue', -70, 0, 50));
-  stage.addChild(drums.shape('Orange', 70, 0, 50));
+  stage.addChild(piano.shape('Blue', -70, 0, 50));
+  stage.addChild(drums.shape('Purple', 70, 0, 50));
   stage.update();
 
   document.getElementById('play-button').addEventListener('click', playPauseClicked);
