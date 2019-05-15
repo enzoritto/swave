@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "webpack --mode=development --config webpack.config-test.js && mocha tests_build/bundle.js --require jsdom-global/register",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "now-build": "webpack --mode=production && rm -rf node_modules"
   },
   "repository": {
     "type": "git",
