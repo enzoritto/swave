@@ -4,13 +4,14 @@ import creatjs from 'createjs';
 let isPaused = true;
 let metronomeInterval;
 let counter = 0;
-let metronomeElement;
+let bpmLabel;
 const piano = new Instrument();
 const drums = new Instrument();
 
 function init () {
   const stage = new createjs.Stage('canvas');
   const canvas = document.getElementById('canvas');
+  bpmLabel = document.getElementById('bpm-label');
   stage.x = canvas.width / 2;
   stage.y = canvas.height / 2;
 
@@ -19,7 +20,6 @@ function init () {
   stage.update();
 
   document.getElementById('play-button').addEventListener('click', playPauseClicked);
-  metronomeElement = document.getElementById('metronome');
 }
 
 const metronome = {
@@ -31,8 +31,6 @@ const metronome = {
   },
   tick(bpm, bpb) {
     counter++;
-    metronomeElement.innerHTML = counter;
-    metronomeElement.className = 'metronome-' + counter;
     if (counter == 1) {
       console.log('tock');
     } else {
@@ -54,11 +52,13 @@ function playPauseClicked (event) {
     metronome.start(70, 4);
     piano.sound('assets/piano.wav').play();
     drums.sound('assets/drums.wav').play();
+    bpmLabel.style.webkitAnimationPlayState = 'running';
+    bpmLabel.style.webkitAnimationDuration = 60/70 + 's';
   } else {
     isPaused = true;
     metronome.stop();
-    piano.sound('assets/piano.wav').stop();
-    drums.sound('assets/drums.wav').stop();
+    piano.sound('assets/piano.wav').pause();
+    drums.sound('assets/drums.wav').pause();
   }
 }
 

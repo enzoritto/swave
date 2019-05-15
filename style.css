@@ -52,12 +52,13 @@ body {
   align-items: center;
 }
 
-#toolbar label {
+#bpm-label {
   padding: 1rem;
 
   background-color: white;
 
   font-weight: bold;
+  animation: pulse infinite;
 }
 
 #bpm-input {
@@ -88,4 +89,9 @@ body {
 
 .button i {
   font-size: 4rem;
+}
+
+@keyframes pulse {
+  from { outline: 0 solid white; }
+  to { outline: 10px solid; }
 }
