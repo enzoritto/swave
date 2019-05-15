@@ -1,9 +1,12 @@
 import Instrument from './instrument';
+import creatjs from 'createjs';
 
 let isPaused = true;
 let metronomeInterval;
 let counter = 0;
 let metronomeElement;
+const piano = new Instrument();
+const drums = new Instrument();
 
 function init () {
   const stage = new createjs.Stage('canvas');
@@ -11,9 +14,8 @@ function init () {
   stage.x = canvas.width / 2;
   stage.y = canvas.height / 2;
 
-  const instrument = new Instrument().create();
-
-  stage.addChild(instrument);
+  stage.addChild(piano.shape('DeepSkyBlue', -70, 0, 50));
+  stage.addChild(drums.shape('Orange', 70, 0, 50));
   stage.update();
 
   document.getElementById('play-button').addEventListener('click', playPauseClicked);
@@ -32,9 +34,9 @@ const metronome = {
     metronomeElement.innerHTML = counter;
     metronomeElement.className = 'metronome-' + counter;
     if (counter == 1) {
-      sounds.tock.play();
+      console.log('tock');
     } else {
-      sounds.tick.play();
+      console.log('tick');
     }
     if (counter % bpb == 0) {
       counter = 0;
@@ -46,21 +48,17 @@ const metronome = {
   }
 }
 
-const sounds = {
-  guitar: new Howl({ src: ['assets/guitar.wav'], loop: true }),
-  tick: new Howl({ src: ['assets/tick.wav'] }),
-  tock: new Howl({ src: ['assets/tock.wav'] }),
-}
-
 function playPauseClicked (event) {
   if (isPaused) {
     isPaused = false;
     metronome.start(70, 4);
-    sounds.guitar.play();
+    piano.sound('assets/piano.wav').play();
+    drums.sound('assets/drums.wav').play();
   } else {
     isPaused = true;
     metronome.stop();
-    sounds.guitar.stop();
+    piano.sound('assets/piano.wav').stop();
+    drums.sound('assets/drums.wav').stop();
   }
 }
 
