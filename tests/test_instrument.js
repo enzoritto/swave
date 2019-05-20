@@ -15,7 +15,28 @@ describe('Instrument', () => {
     const instrument = new Instrument();
     instrument.createSound = () => { called = true; };
 
-    instrument.sound('assets/guitar.wav');
+    instrument.initSound('assets/sound.wav');
     expect(called).to.be(true);
+  });
+  it('Instrument.play plays instrument.sound', () => {
+    const instrument = new Instrument();
+    instrument.playSound = () => {};
+
+    instrument.play();
+    expect(instrument.state).to.equal('playing');
+  });
+  it('Instrument.pause stops instrument.sound', () => {
+    const instrument = new Instrument();
+    instrument.pauseSound = () => {};
+
+    instrument.pause();
+    expect(instrument.state).to.equal('paused');
+  });
+  it('Instrument.stop stops instrument.sound', () => {
+    const instrument = new Instrument();
+    instrument.stopSound = () => {};
+
+    instrument.stop();
+    expect(instrument.state).to.equal('stopped');
   });
 });

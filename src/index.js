@@ -1,8 +1,9 @@
 import Instrument from './instrument';
 import creatjs from 'createjs';
 
-let isPaused = true;
 let metronomeInterval;
+let bpm = 70;
+let bpb = 4;
 let counter = 0;
 let bpmLabel;
 const piano = new Instrument();
@@ -19,11 +20,16 @@ function init () {
   stage.addChild(drums.shape('Purple', 70, 0, 50));
   stage.update();
 
-  document.getElementById('play-button').addEventListener('click', playPauseClicked);
+  piano.initSound('assets/piano.wav');
+  drums.initSound('assets/drums.wav');
+
+  document.getElementById('play-button').addEventListener('click', playClicked);
+  document.getElementById('pause-button').addEventListener('click', pauseClicked);
+  document.getElementById('stop-button').addEventListener('click', stopClicked);
 }
 
 const metronome = {
-  start(bpm, bpb) {
+  start() {
     this.tick(bpm, bpb);
     metronomeInterval = setInterval(() => {
       this.tick(bpm, bpb);
@@ -40,26 +46,36 @@ const metronome = {
       counter = 0;
     }
   },
+  pause() {
+    counter = 0;
+    clearInterval(metronomeInterval);
+  },
   stop() {
     counter = 0;
     clearInterval(metronomeInterval);
   }
 }
 
-function playPauseClicked (event) {
-  if (isPaused) {
-    isPaused = false;
-    metronome.start(70, 4);
-    piano.sound('assets/piano.wav').play();
-    drums.sound('assets/drums.wav').play();
-    bpmLabel.style.webkitAnimationPlayState = 'running';
-    bpmLabel.style.webkitAnimationDuration = 60/70 + 's';
-  } else {
-    isPaused = true;
-    metronome.stop();
-    piano.sound('assets/piano.wav').pause();
-    drums.sound('assets/drums.wav').pause();
-  }
+function playClicked (event) {
+  metronome.start();
+  piano.play();
+  drums.play();
+  bpmLabel.style.webkitAnimationPlayState = 'running';
+  bpmLabel.style.webkitAnimationDuration = 60/70 + 's';
+}
+
+function pauseClicked (event) {
+  metronome.pause();
+  piano.pause();
+  drums.pause();
+  bpmLabel.style.webkitAnimationPlayState = 'paused';
+}
+
+function stopClicked (event) {
+  metronome.stop();
+  piano.stop();
+  drums.stop();
+  bpmLabel.style.webkitAnimation = '';
 }
 
 window.onload = init;
