@@ -6,13 +6,23 @@ let bpm = 70;
 let bpb = 4;
 let counter = 0;
 let bpmLabel;
+let playButton;
+let pauseButton;
+let stopButton;
 const piano = new Instrument();
 const drums = new Instrument();
 
 function init () {
-  const stage = new createjs.Stage('canvas');
   const canvas = document.getElementById('canvas');
   bpmLabel = document.getElementById('bpm-label');
+  playButton = document.getElementById('play-button');
+  pauseButton = document.getElementById('pause-button');
+  stopButton = document.getElementById('stop-button');
+  playButton.disabled = false;
+  pauseButton.disabled = true;
+  stopButton.disabled = true;
+
+  const stage = new createjs.Stage('canvas');
   stage.x = canvas.width / 2;
   stage.y = canvas.height / 2;
 
@@ -23,9 +33,9 @@ function init () {
   piano.initSound('assets/piano.wav');
   drums.initSound('assets/drums.wav');
 
-  document.getElementById('play-button').addEventListener('click', playClicked);
-  document.getElementById('pause-button').addEventListener('click', pauseClicked);
-  document.getElementById('stop-button').addEventListener('click', stopClicked);
+  playButton.addEventListener('click', playClicked);
+  pauseButton.addEventListener('click', pauseClicked);
+  stopButton.addEventListener('click', stopClicked);
 }
 
 const metronome = {
@@ -62,6 +72,9 @@ function playClicked (event) {
   drums.play();
   bpmLabel.style.webkitAnimationPlayState = 'running';
   bpmLabel.style.webkitAnimationDuration = 60/70 + 's';
+  playButton.disabled = true;
+  pauseButton.disabled = false;
+  stopButton.disabled = false;
 }
 
 function pauseClicked (event) {
@@ -69,6 +82,9 @@ function pauseClicked (event) {
   piano.pause();
   drums.pause();
   bpmLabel.style.webkitAnimationPlayState = 'paused';
+  playButton.disabled = false;
+  pauseButton.disabled = true;
+  stopButton.disabled = false;
 }
 
 function stopClicked (event) {
@@ -76,6 +92,9 @@ function stopClicked (event) {
   piano.stop();
   drums.stop();
   bpmLabel.style.webkitAnimation = '';
+  playButton.disabled = false;
+  pauseButton.disabled = true;
+  stopButton.disabled = true;
 }
 
 window.onload = init;
