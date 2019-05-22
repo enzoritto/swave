@@ -5,9 +5,9 @@ describe('Instrument', () => {
   it('Creates an easlejs Shape', () => {
     let called = false;
     const instrument = new Instrument();
-    instrument.createShape = () => { called = true; };
+    instrument.createElement = () => { called = true; };
 
-    instrument.shape('DeepSkyBlue');
+    instrument.initElement('#0d72c4');
     expect(called).to.be(true);
   });
   it('Create a new Howl', () => {

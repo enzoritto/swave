@@ -11,11 +11,7 @@ module.exports = {
   watchOptions: {
     ignored: /node_modules/
   },
-  externals: {
-    'createjs': 'createjs'
-  },
   plugins: [
-    new webpack.ProvidePlugin({ createjs: ['createjs'] }),
     new webpack.ProvidePlugin({ expect: ['expect.js'] })
   ]
 };
