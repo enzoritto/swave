@@ -16,14 +16,14 @@ body {
 #version {
   position: absolute;
   top: 0.5rem;
-  left: 1rem;
-
+  left: -4rem;
   margin: 0;
-
-  color: #DBDBDB;
-
+  color: white;
   user-select: none;
   -moz-user-select: none;
+  background-color: black;
+  padding: .3rem 4rem;
+  transform: rotate(-45deg);
 }
 
 #source-code-link {
