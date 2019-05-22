@@ -33,6 +33,13 @@ function init () {
   musiciansElement.appendChild(piano.element);
   musiciansElement.appendChild(drums.element);
 
+  piano.element.addEventListener('click', () => {
+    piano.toggleMute();
+  });
+  drums.element.addEventListener('click', () => {
+    drums.toggleMute();
+  });
+
   piano.initSound('audio/piano');
   drums.initSound('audio/drums');
 

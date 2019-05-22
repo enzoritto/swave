@@ -1,6 +1,7 @@
 export default class Instrument {
   constructor () {
     this.state = 'stopped';
+    this.muted = false;
   }
   play () {
     this.state = 'playing';
@@ -13,6 +14,11 @@ export default class Instrument {
   stop () {
     this.state = 'stopped';
     this.stopSound();
+  }
+  toggleMute () {
+    if(!this.muted) { this.state = 'muted'; }
+    else { this.state = 'playing'; }
+    this.toggleSound();
   }
   initElement (color) {
     this.createElement(color);
@@ -36,5 +42,9 @@ export default class Instrument {
   }
   stopSound () {
     this.sound.stop();
+  }
+  toggleSound () {
+    this.muted = !this.muted;
+    this.sound.mute(!this.sound.mute());
   }
 }
