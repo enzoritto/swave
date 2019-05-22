@@ -1,3 +1,9 @@
+$isabelline: #F6F7ED;
+$red: #E8280B;
+$gunmetal: #27373F;
+$french-blue: #0D72C4;
+$smoky-black: #080C00;
+
 * {
   margin: 0;
 }
@@ -8,9 +14,10 @@ button::-moz-focus-inner {
 
 body {
   margin: 0;
-  padding 0;
+  padding: 0;
 
   font-family: "Roboto", sans-serif;
+  background-color: $isabelline;
 }
 
 #version {
@@ -21,7 +28,7 @@ body {
   color: white;
   user-select: none;
   -moz-user-select: none;
-  background-color: black;
+  background-color: #080C00;
   padding: .3rem 4rem;
   transform: rotate(-45deg);
 }
