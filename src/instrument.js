@@ -14,17 +14,19 @@ export default class Instrument {
     this.state = 'stopped';
     this.stopSound();
   }
-  shape (color, x, y, radius) {
-    return this.createShape(color, x, y, radius);
+  initElement (color) {
+    this.createElement(color);
   }
-  createShape (color, x, y, radius) {
-    const shape = new window.createjs.Shape();
-
-    shape.graphics.beginFill(color).drawCircle(x, y, radius);
-    return shape;
+  createElement (color) {
+    this.element = document.createElement('div');
+    this.element.className = 'musician';
+    this.element.style.backgroundColor = color;
   }
   initSound (path) {
     this.createSound(path);
+  }
+  createSound (path) {
+    this.sound = new Howl({ src: [path + '.ogg', path + '.mp3'], loop: true });
   }
   playSound () {
     this.sound.play();
@@ -34,8 +36,5 @@ export default class Instrument {
   }
   stopSound () {
     this.sound.stop();
-  }
-  createSound (path) {
-    this.sound = new Howl({ src: [path + '.ogg', path + '.mp3'], loop: true });
   }
 }

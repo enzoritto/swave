@@ -4,7 +4,6 @@ import './assets/piano.mp3';
 import './assets/drums.ogg';
 import './assets/drums.mp3';
 import Instrument from './instrument';
-import creatjs from 'createjs';
 
 let metronomeInterval;
 let bpm = 70;
@@ -19,6 +18,7 @@ const drums = new Instrument();
 
 function init () {
   const canvas = document.getElementById('canvas');
+  const musiciansElement = document.getElementById('musicians');
   bpmLabel = document.getElementById('bpm-label');
   playButton = document.getElementById('play-button');
   pauseButton = document.getElementById('pause-button');
@@ -27,13 +27,11 @@ function init () {
   pauseButton.disabled = true;
   stopButton.disabled = true;
 
-  const stage = new createjs.Stage('canvas');
-  stage.x = canvas.width / 2;
-  stage.y = canvas.height / 2;
+  piano.initElement('#e8280b');
+  drums.initElement('#0d72c4');
 
-  stage.addChild(piano.shape('Blue', -70, 0, 50));
-  stage.addChild(drums.shape('Purple', 70, 0, 50));
-  stage.update();
+  musiciansElement.appendChild(piano.element);
+  musiciansElement.appendChild(drums.element);
 
   piano.initSound('audio/piano');
   drums.initSound('audio/drums');

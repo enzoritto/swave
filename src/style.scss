@@ -20,6 +20,21 @@ body {
   background-color: $isabelline;
 }
 
+.musician {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  margin: 1rem;
+}
+
+#musicians {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 30vh;
+}
+
 #version {
   position: absolute;
   top: 0.5rem;
