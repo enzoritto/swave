@@ -25,10 +25,10 @@ body {
   top: 0.5rem;
   left: -4rem;
   margin: 0;
-  color: white;
+  color: $isabelline;
   user-select: none;
   -moz-user-select: none;
-  background-color: #080C00;
+  background-color: $smoky-black;
   padding: .3rem 4rem;
   transform: rotate(-45deg);
 }
@@ -40,9 +40,9 @@ body {
   width: 0;
   height: 5rem;
   padding: 0;
-  color: white;
-  border-left: 2rem solid black;
-  border-right: 2rem solid black;
+  color: $isabelline;
+  border-left: 2rem solid $smoky-black;
+  border-right: 2rem solid $smoky-black;
   border-bottom: 2rem solid transparent;
   transition: height .2s;
 }
@@ -80,7 +80,7 @@ body {
   height: 6rem;
   width: 100%;
 
-  background-color: black;
+  background-color: $smoky-black;
 }
 
 #toolbar div {
@@ -98,7 +98,7 @@ body {
 #bpm-label {
   padding: 1rem;
 
-  background-color: white;
+  background-color: $isabelline;
 
   font-weight: bold;
   animation: pulse infinite;
@@ -106,13 +106,13 @@ body {
 
 #bpm-input {
   box-sizing: border-box;
-  border: 3px solid white;
+  border: 3px solid $isabelline;
 
   width: 5rem;
   height: 54px;
 
-  background-color: black;
-  color: white;
+  background-color: $smoky-black;
+  color: $isabelline;
 
   font-weight: bold;
   font-size: 1.5rem;
@@ -122,7 +122,7 @@ body {
 .button {
   border: none;
   background-color: transparent;
-  color: white;
+  color: $isabelline;
   font-size: 4rem;
   height: 5rem;
 }
@@ -140,6 +140,6 @@ body {
 }
 
 @keyframes pulse {
-  from { outline: 0 solid white; }
+  from { outline: 0 solid $isabelline; }
   to { outline: 10px solid; }
 }
