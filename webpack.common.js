@@ -30,6 +30,14 @@ module.exports = {
             name: '[name].[hash].[ext]',
             outputPath: 'images'
           }
+        },
+        test: /\.(wav|ogg|mp3)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'audio'
+          }
         }
       }
     ]

@@ -1,4 +1,8 @@
 import './style.scss';
+import './assets/piano.ogg';
+import './assets/piano.mp3';
+import './assets/drums.ogg';
+import './assets/drums.mp3';
 import Instrument from './instrument';
 import creatjs from 'createjs';
 
@@ -31,8 +35,8 @@ function init () {
   stage.addChild(drums.shape('Purple', 70, 0, 50));
   stage.update();
 
-  piano.initSound('src/assets/piano.wav');
-  drums.initSound('src/assets/drums.wav');
+  piano.initSound('audio/piano');
+  drums.initSound('audio/drums');
 
   playButton.addEventListener('click', playClicked);
   pauseButton.addEventListener('click', pauseClicked);

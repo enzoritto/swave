@@ -36,6 +36,6 @@ export default class Instrument {
     this.sound.stop();
   }
   createSound (path) {
-    this.sound = new Howl({ src: [path], loop: true });
+    this.sound = new Howl({ src: [path + '.ogg', path + '.mp3'], loop: true });
   }
 }
