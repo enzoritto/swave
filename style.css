@@ -58,11 +58,7 @@ body {
 
 #canvas {
   display: block;
-  border-radius: 20px;
-
   margin: 10vh auto 0 auto;
-
-  background-color: #EDEDED;
 }
 
 #toolbar {
