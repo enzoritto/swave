@@ -5,6 +5,7 @@ import './assets/drums.ogg';
 import './assets/drums.mp3';
 import Instrument from './instrument';
 
+let isPlaying = false;
 let metronomeInterval;
 let bpm = 70;
 let bpb = 4;
@@ -40,6 +41,17 @@ function init () {
     drums.toggleMute();
   });
 
+  document.addEventListener('keyup', (e) => {
+    if (e.keyCode === 32) {
+      isPlaying ? pauseClicked() : playClicked();
+      isPlaying = !isPlaying;
+    }
+    if (e.keyCode === 27) {
+      stopClicked();
+      isPlaying = false;
+    }
+  });
+
   piano.initSound('audio/piano');
   drums.initSound('audio/drums');
 
@@ -58,9 +70,9 @@ const metronome = {
   tick(bpm, bpb) {
     counter++;
     if (counter == 1) {
-      console.log('tock');
+      // Something
     } else {
-      console.log('tick');
+      // Something
     }
     if (counter % bpb == 0) {
       counter = 0;
