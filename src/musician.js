@@ -1,7 +1,10 @@
 export default class Musician {
-  constructor () {
+  constructor (soundPath, color) {
     this.state = 'stopped';
     this.muted = false;
+    this.initElement(color);
+    this.initSound(soundPath);
+    this.element.addEventListener('click', () => { this.toggleMute(); });
   }
   play () {
     this.state = 'playing';
