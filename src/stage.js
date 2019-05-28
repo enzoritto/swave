@@ -1,3 +1,5 @@
+const Shortcut = require('mousetrap');
+
 export default class Stage {
   constructor (musicians) {
     this.musicians = musicians;
@@ -25,15 +27,13 @@ export default class Stage {
       this.isPlaying = false;
     });
 
-    document.addEventListener('keyup', (e) => {
-      if (e.keyCode === 32) {
-        this.isPlaying ? this.pause() : this.play();
-        this.isPlaying = !this.isPlaying;
-      }
-      if (e.keyCode === 27) {
+    Shortcut.bind('space', () => {
+      this.isPlaying ? this.pause() : this.play();
+      this.isPlaying = !this.isPlaying;
+    });
+    Shortcut.bind('esc', () => {
         this.stop();
         this.isPlaying = false;
-      }
     });
   }
 
