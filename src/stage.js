@@ -12,9 +12,18 @@ export default class Stage {
     this.pauseButton.disabled = true;
     this.stopButton.disabled = true;
 
-    this.playButton.addEventListener('click', () => this.play());
-    this.pauseButton.addEventListener('click', () => this.pause());
-    this.stopButton.addEventListener('click', () => this.stop());
+    this.playButton.addEventListener('click', () => {
+      this.play();
+      this.isPlaying = !this.isPlaying;
+    });
+    this.pauseButton.addEventListener('click', () => {
+      this.pause();
+      this.isPlaying = !this.isPlaying;
+    });
+    this.stopButton.addEventListener('click', () => {
+      this.stop();
+      this.isPlaying = false;
+    });
 
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === 32) {
