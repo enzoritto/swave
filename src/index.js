@@ -3,7 +3,7 @@ import './assets/piano.ogg';
 import './assets/piano.mp3';
 import './assets/drums.ogg';
 import './assets/drums.mp3';
-import Instrument from './instrument';
+import Musician from './musician';
 
 let isPlaying = false;
 let metronomeInterval;
@@ -14,8 +14,8 @@ let bpmLabel;
 let playButton;
 let pauseButton;
 let stopButton;
-const piano = new Instrument();
-const drums = new Instrument();
+const piano = new Musician();
+const drums = new Musician();
 
 function init () {
   const canvas = document.getElementById('canvas');
