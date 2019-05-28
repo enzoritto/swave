@@ -1,4 +1,4 @@
-export default class Instrument {
+export default class Musician {
   constructor () {
     this.state = 'stopped';
     this.muted = false;
