@@ -1,14 +1,10 @@
 # Current Iteration Backlog (v0.2)
 
-* [ ] Be able to pause & unpause the instrument
-* [ ] Have other instruments that play different loops (max 4)
-* [ ] Be able to mute an instrument
 * [ ] Be able to solo an instrument
-* [ ] Preload sounds
+* [ ] Add the instruments (instead of them being instaciated by default)
 
 # Product Backlog
 
-* Add the instruments (instead of them being instaciated by default)
 * Remove an instrument
 * Change the tempo
 * Add characters illustrations (musicians)
