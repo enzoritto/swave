@@ -108,10 +108,11 @@ body {
 
 #toolbar div:nth-of-type(1) { justify-content: start; }
 #toolbar div:nth-of-type(2) { justify-content: center; }
-#toolbar div:nth-of-type(3) { justify-content: end; }
+#toolbar div:nth-of-type(3) { flex-direction: row-reverse; }
 
 #bpm-label {
   padding: 1rem;
+  height: 1.4rem;
 
   background-color: $isabelline;
 
@@ -121,10 +122,10 @@ body {
 
 #bpm-input {
   box-sizing: border-box;
-  border: 3px solid $isabelline;
+  border: 0.3rem solid $isabelline;
 
   width: 5rem;
-  height: 54px;
+  height: 3.4rem;
 
   background-color: $smoky-black;
   color: $isabelline;
