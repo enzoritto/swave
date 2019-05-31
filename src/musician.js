@@ -1,35 +1,30 @@
+import SoundFactory from './soundFactory';
+
 export default class Musician {
   constructor (soundPath, color) {
     this.state = 'stopped';
+    this.soundFactory = new SoundFactory;
     this.muted = false;
-    this.initElement(color);
-    this.sound = new Howl({ src: [soundPath + '.ogg', soundPath + '.mp3'], loop: true });
-    this.element.addEventListener('click', () => { this.toggleMute(); });
+    this.createElement(color);
+    this.sound = this.soundFactory.createSound(soundPath, true);
+    this.element.addEventListener('click', () => { this.mute(); });
   }
 
   play () {
-    this.state = 'playing';
-    this.playSound();
+    this.soundFactory.play(this.sound);
   }
 
   pause () {
-    this.state = 'paused';
-    this.pauseSound();
+    this.soundFactory.pause(this.sound);
   }
 
   stop () {
-    this.state = 'stopped';
-    this.stopSound();
+    this.soundFactory.stop(this.sound);
   }
 
-  toggleMute () {
-    if(!this.muted) { this.state = 'muted'; }
-    else { this.state = 'playing'; }
-    this.toggleSound();
-  }
-
-  initElement (color) {
-    this.createElement(color);
+  mute () {
+    this.soundFactory.mute(this.sound, this.muted);
+    this.muted = !this.muted;
   }
 
   createElement (color) {
@@ -41,22 +36,4 @@ export default class Musician {
   display (parent) {
     parent.appendChild(this.element);
   }
-
-  playSound () {
-    this.sound.play();
-  }
-
-  pauseSound () {
-    this.sound.pause();
-  }
-
-  stopSound () {
-    this.sound.stop();
-  }
-
-  toggleSound () {
-    this.muted = !this.muted;
-    this.sound.mute(!this.sound.mute());
-  }
-
 }

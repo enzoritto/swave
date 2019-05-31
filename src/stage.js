@@ -32,8 +32,8 @@ export default class Stage {
       this.isPlaying = !this.isPlaying;
     });
     Shortcut.bind('esc', () => {
-        this.stop();
-        this.isPlaying = false;
+      this.stop();
+      this.isPlaying = false;
     });
   }
 
