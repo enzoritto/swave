@@ -23,8 +23,9 @@ export default class Musician {
   }
 
   mute () {
-    this.soundFactory.mute(this.sound, this.muted);
     this.muted = !this.muted;
+    this.muted ? this.element.className += ' muted' : this.element.className = 'musician';
+    this.soundFactory.mute(this.sound, this.muted);
   }
 
   createElement (color) {
