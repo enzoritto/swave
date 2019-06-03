@@ -37,6 +37,13 @@ export default class Stage {
     });
   }
 
+  initStage (parent) {
+    this.musicianButton = document.createElement('button');
+    this.musicianButton.className = 'musician-button';
+    this.musicianButton.innerHTML = '<ion-icon name="add"></ion-icon>'
+    parent.appendChild(this.musicianButton);
+  }
+
   play () {
     this.musicians.forEach((musician) => { musician.play(); } );
     this.playButton.disabled = true;
