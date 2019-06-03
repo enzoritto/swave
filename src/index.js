@@ -7,13 +7,11 @@ import Musician from './musician';
 import Stage from './stage';
 
 function init () {
-  const musicians = [
-    new Musician('audio/piano', '#e8280b'),
-    new Musician('audio/drums', '#0d72c4'),
-  ];
+  const musicians = [];
   const stage = new Stage(musicians);
   const musiciansElement = document.getElementById('musicians');
 
+  stage.initStage(musiciansElement);
   stage.initToolbar();
 
   musicians.forEach((musician) => {

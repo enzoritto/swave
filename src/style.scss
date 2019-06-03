@@ -31,6 +31,23 @@ body {
   opacity: 0.3;
 }
 
+.musician-button {
+  width: 6rem;
+  height: 6rem;
+  border: .3rem dashed #ddd;
+  border-radius: 50%;
+  margin: 1rem;
+  ion-icon {
+    font-size: 3rem;
+    color: #ddd;
+    margin-top: .3rem;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+  }
+}
+
 #musicians {
   display: flex;
   justify-content: center;
@@ -64,22 +81,19 @@ body {
   border-right: 2rem solid $smoky-black;
   border-bottom: 2rem solid transparent;
   transition: height .2s;
-}
-
-#source-code-link i {
+  & ion-icon {
   margin-left: -1.5rem;
-  margin-top: 1.3rem;
+  margin-top: 1rem;
   transition: margin-top .2s;
   font-size: 3rem;
   font-weight: bold;
-}
-
-#source-code-link:hover {
-  height: 5.5rem;
-}
-
-#source-code-link:hover i {
-  margin-top: 1.8rem;
+  }
+  &:hover {
+    height: 5.5rem;
+    & ion-icon {
+      margin-top: 1.5rem;
+    }
+  }
 }
 
 #canvas {
