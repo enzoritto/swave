@@ -48,6 +48,25 @@ body {
   }
 }
 
+.instrument-button {
+  box-sizing: border-box;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 10%;
+  transition: .3s;
+  & img {
+    filter: invert(1);
+    width: 3rem;
+    height: 3rem;
+  }
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
 #musicians {
   display: flex;
   justify-content: center;
@@ -171,6 +190,24 @@ body {
 
 .button i {
   font-size: 4rem;
+}
+
+.tippy-tooltip.black-theme {
+  border-radius: 0;
+  background-color: black;
+  color: white;
+}
+
+.tippy-tooltip.black-theme[data-animatefill] {
+  background-color: transparent;
+}
+
+.tippy-tooltip.black-theme .tippy-backdrop {
+  background-color: black;
+}
+
+.tippy-tooltip.black-theme .tippy-arrow {
+  border-bottom: 8px solid #000;
 }
 
 @keyframes pulse {
