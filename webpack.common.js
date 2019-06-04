@@ -6,7 +6,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/template.html'
-    })
+    }),
   ],
   module: {
     rules: [
@@ -23,14 +23,16 @@ module.exports = {
         use: ['html-loader']
       },
       {
-        test: /\.(svg|png|jpg|gif)$/,
-        use: {
+        test: /\.png$/,
+        use: [{
           loader: 'file-loader',
           options: {
-            name: '[name].[hash].[ext]',
+            name: '[name].[ext]',
             outputPath: 'images'
           }
-        },
+        }],
+      },
+      {
         test: /\.(wav|ogg|mp3)$/,
         use: {
           loader: 'file-loader',
