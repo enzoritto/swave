@@ -1,6 +1,6 @@
 # Awesome Band (Working Title)
 
-Awesome Band is a music creation webapp that aims to give the user a more enjoyable experiance while allowing them to make good quality royalty-free music easily.
+Awesome Band is a music creation webapp that aims to give the user a more enjoyable experience while allowing them to make good quality royalty-free music easily.
 
 # Getting Started
 
