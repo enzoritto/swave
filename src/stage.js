@@ -55,7 +55,7 @@ export default class Stage {
   initStage () {
     this.musicianButton = document.createElement('button');
     this.musicianButton.className = 'musician-button';
-    this.musicianButton.innerHTML = '<ion-icon name="add"></ion-icon>';
+    this.musicianButton.innerHTML = '<i class="fas fa-plus"></i>';
     this.instrumentButtons = Array(this.instruments.length).fill().map((_, i) => {
       let button = document.createElement('button');
       button.className = 'instrument-button';
