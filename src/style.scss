@@ -1,8 +1,5 @@
-$isabelline: #F6F7ED;
-$red: #E8280B;
-$gunmetal: #27373F;
-$french-blue: #0D72C4;
-$smoky-black: #080C00;
+@import url('https://fonts.googleapis.com/css?family=Knewave&display=swap');
+@import 'styles/colors.scss';
 
 * {
   margin: 0;
@@ -17,7 +14,7 @@ body {
   padding: 0;
 
   font-family: "Roboto", sans-serif;
-  background-color: $isabelline;
+  background-color: $background;
 }
 
 .musician {
@@ -25,6 +22,8 @@ body {
   height: 6rem;
   border-radius: 50%;
   margin: 1rem;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+  background-size: contain;
 }
 
 .muted {
@@ -34,17 +33,16 @@ body {
 .musician-button {
   width: 6rem;
   height: 6rem;
-  border: .3rem dashed #ddd;
+  border: .5rem dashed #fff;
   border-radius: 50%;
   margin: 1rem;
-  i {
-    font-size: 3rem;
-    color: #ddd;
-    margin-top: .3rem;
+  background-color: transparent;
+  img {
+    padding: 1rem 0;
+    width: 75%;
   }
   &:hover {
     cursor: pointer;
-    background-color: #f1f1f1;
   }
 }
 
@@ -76,14 +74,16 @@ body {
 }
 
 #version {
+  font-family: 'Knewave', cursive;
+  font-size: 2rem;
   position: absolute;
   top: 0.5rem;
   left: -4rem;
   margin: 0;
-  color: $isabelline;
+  color: $white;
   user-select: none;
   -moz-user-select: none;
-  background-color: $smoky-black;
+  background-color: $black;
   padding: .3rem 4rem;
   transform: rotate(-45deg);
 }
@@ -95,9 +95,9 @@ body {
   width: 0;
   height: 5rem;
   padding: 0;
-  color: $isabelline;
-  border-left: 2rem solid $smoky-black;
-  border-right: 2rem solid $smoky-black;
+  color: $white;
+  border-left: 2rem solid $black;
+  border-right: 2rem solid $black;
   border-bottom: 2rem solid transparent;
   transition: height .2s;
   & i {
@@ -129,10 +129,10 @@ body {
   bottom: 0;
 
   padding: 0 1rem;
-  height: 6rem;
+  height: 5.2rem;
   width: 100%;
 
-  background-color: $smoky-black;
+  background-color: $black;
 }
 
 #toolbar div {
@@ -148,54 +148,55 @@ body {
 #toolbar div:nth-of-type(3) { flex-direction: row-reverse; }
 
 #bpm-label {
-  padding: 1rem;
-  height: 1.4rem;
-
-  background-color: $isabelline;
-
+  font-family: 'Knewave', cursive;
+  background-color: #fff;
   font-weight: bold;
   animation: pulse infinite;
+  font-size: 1.55rem;
+  padding: 0.4rem 0.4rem 0.4rem 1rem;
+  border-radius: 10px 0 0 10px;
 }
 
 #bpm-input {
   box-sizing: border-box;
-  border: 0.3rem solid $isabelline;
-
+  border: 0.4rem solid #fff;
   width: 5rem;
-  height: 3.4rem;
-
-  background-color: $smoky-black;
-  color: $isabelline;
-
+  background-color: #000;
+  color: #fff;
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
+  border-radius: 0 10px 10px 0;
+  font-family: knewave;
 }
 
 .button {
   border: none;
   background-color: transparent;
-  color: $isabelline;
+  color: $white;
   font-size: 4rem;
   height: 5rem;
-}
-
-.button:hover {
-  cursor: pointer;
-}
-
-.button:disabled {
-  color: #424242;
-}
-
-.button i {
-  font-size: 4rem;
+  &:hover {
+    cursor: pointer;
+  }
+  &:disabled {
+    opacity: 0.2;
+  }
+  & img {
+    width: 80%;
+  }
 }
 
 .tippy-tooltip.black-theme {
   border-radius: 0;
-  background-color: black;
   color: white;
+  top: 0.5rem;
+  background: url('/images/dropdown.svg');
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+  padding-top: 1.2rem;
+  height: 6rem;
 }
 
 .tippy-tooltip.black-theme[data-animatefill] {
@@ -207,10 +208,10 @@ body {
 }
 
 .tippy-tooltip.black-theme .tippy-arrow {
-  border-bottom: 8px solid #000;
+  border: none;
 }
 
 @keyframes pulse {
-  from { outline: 0 solid $isabelline; }
+  from { outline: 0 solid $white; }
   to { outline: 10px solid; }
 }

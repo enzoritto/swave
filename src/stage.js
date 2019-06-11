@@ -4,18 +4,24 @@ import Musician from './musician';
 import './assets/icons/drums.png';
 import './assets/icons/piano.png';
 import './assets/icons/guitar.png';
-import './assets/piano.ogg';
-import './assets/piano.mp3';
-import './assets/guitar.ogg';
-import './assets/guitar.mp3';
-import './assets/drums.ogg';
-import './assets/drums.mp3';
+import './assets/audio/piano.ogg';
+import './assets/audio/piano.mp3';
+import './assets/audio/guitar.ogg';
+import './assets/audio/guitar.mp3';
+import './assets/audio/drums.ogg';
+import './assets/audio/drums.mp3';
+import './assets/svg/plus.svg';
+import './assets/svg/play.svg';
+import './assets/svg/pause.svg';
+import './assets/svg/stop.svg';
+import './assets/svg/menu.svg';
+import './assets/svg/dropdown.svg';
 
 export default class Stage {
   constructor (musiciansElement) {
     this.musicians = [];
     this.instruments = ['piano', 'drums', 'guitar'];
-    this.colors = ['#ff3864', '#cc978e', '#f39c6b'];
+    this.avatars = ['1', '2', '3'];
     this.musiciansElement = musiciansElement;
     this.isPlaying = false;
     this.playButton = document.getElementById('play-button');
@@ -55,14 +61,14 @@ export default class Stage {
   initStage () {
     this.musicianButton = document.createElement('button');
     this.musicianButton.className = 'musician-button';
-    this.musicianButton.innerHTML = '<i class="fas fa-plus"></i>';
+    this.musicianButton.innerHTML = '<img src="images/plus.svg"></img>';
     this.instrumentButtons = Array(this.instruments.length).fill().map((_, i) => {
       let button = document.createElement('button');
       button.className = 'instrument-button';
       button.id = this.instruments[i];
       button.innerHTML = '<img src="images/'+ this.instruments[i] +'.png">';
       button.addEventListener('click', () => {
-          this.createMusician('audio/' + this.instruments[i], this.colors[i]);
+          this.createMusician('audio/' + this.instruments[i], this.avatars[i]);
       });
       return button;
     });
@@ -72,6 +78,8 @@ export default class Stage {
     });
     tooltip(this.musicianButton, {
       theme: 'black',
+      animateFill: false,
+      animation: 'scale',
       trigger: 'click',
       arrow: true,
       arrowType: 'sharp',

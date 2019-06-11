@@ -1,11 +1,11 @@
 import SoundFactory from './soundFactory';
 
 export default class Musician {
-  constructor (soundPath, color) {
+  constructor (soundPath, avatar) {
     this.state = 'stopped';
     this.soundFactory = new SoundFactory;
     this.muted = false;
-    this.createElement(color);
+    this.createElement(avatar);
     this.sound = this.soundFactory.createSound(soundPath, true);
     this.element.addEventListener('click', () => { this.mute(); });
   }
@@ -28,10 +28,10 @@ export default class Musician {
     this.soundFactory.mute(this.sound, this.muted);
   }
 
-  createElement (color) {
+  createElement (avatar) {
     this.element = document.createElement('div');
     this.element.className = 'musician';
-    this.element.style.backgroundColor = color;
+    this.element.style.backgroundImage = 'url(https://api.adorable.io/avatars/150/' + avatar + '@adorable.png';
   }
 
   display (parent) {
