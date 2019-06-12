@@ -1,0 +1,19 @@
+.tippy-tooltip.black-theme {
+  top: 0.5rem;
+
+  border-radius: 0;
+  padding-top: 1.2rem;
+  height: 6rem;
+
+  color: white;
+  background: url('/images/dropdown.svg');
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.tippy-tooltip.black-theme[data-animatefill] { background-color: transparent; }
+
+.tippy-tooltip.black-theme .tippy-backdrop { background-color: black; }
+
+.tippy-tooltip.black-theme .tippy-arrow { border: none; }
