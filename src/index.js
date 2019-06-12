@@ -1,4 +1,5 @@
 import './style.scss';
+import 'assets/favicon.png';
 import Musician from './musician';
 import Stage from './stage';
 
