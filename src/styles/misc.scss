@@ -1,0 +1,44 @@
+#version {
+  position: absolute;
+  top: 0.5rem;
+  left: -4rem;
+
+  margin: 0;
+  padding: .7rem 4rem;
+  transform: rotate(-45deg);
+
+  color: #fff;
+  background-color: #000;
+
+  font-family: 'Knewave', cursive;
+  font-size: 2rem;
+
+  user-select: none;
+}
+
+#source-code-link {
+  position: absolute;
+  right: 3.5rem;
+  top: 0;
+
+  border-left: 2rem solid #000;
+  border-right: 2rem solid #000;
+  border-bottom: 2rem solid transparent;
+  width: 0;
+  height: 5rem;
+  padding: 0;
+
+  color: #fff;
+
+  transition: height .2s;
+
+  & i {
+    margin-left: -1.5rem;
+    margin-top: 1rem;
+
+    font-size: 3rem;
+    font-weight: bold;
+
+    transition: margin-top .2s;
+  }
+}
