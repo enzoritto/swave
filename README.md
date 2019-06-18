@@ -2,6 +2,10 @@
 
 Awesome Band is a music creation webapp that aims to give the user a more enjoyable experience while allowing them to make good quality royalty-free music easily.
 
+## Naming the project
+
+if you have a name suggestion please create an issue to discuss it.
+
 # Getting Started
 
 Use the [npm](https://www.npmjs.com/) package manager to install Awesome Band before running it localy.

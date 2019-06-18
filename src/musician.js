@@ -1,31 +1,47 @@
-import SoundFactory from './soundFactory';
+import * as soundfont from 'soundfont-player';
 
 export default class Musician {
-  constructor (soundPath, avatar) {
+  constructor (instrument, avatar) {
     this.state = 'stopped';
-    this.soundFactory = new SoundFactory;
+    this.audioContext = new AudioContext();
+    this.instrument = soundfont.instrument(this.audioContext, instrument);
+    this.bpm = 60/120;
     this.muted = false;
     this.createElement(avatar);
-    this.sound = this.soundFactory.createSound(soundPath, true);
     this.element.addEventListener('click', () => { this.mute(); });
+    this.notes = [{
+      time: 0,
+      note: 50
+    }, {
+      time: 1,
+      note: 53
+    }, {
+      time: 2,
+      note: 57
+    }, {
+      time: 3,
+      note: 60
+    }];
   }
 
   play () {
-    this.soundFactory.play(this.sound);
+    this.instrument.then((player) => {
+      player.schedule(this.audioContext.currentTime, this.notes);
+    });
   }
 
   pause () {
-    this.soundFactory.pause(this.sound);
   }
 
   stop () {
-    this.soundFactory.stop(this.sound);
+    this.instrument.then((player) => {
+      player.stop();
+    });
   }
 
   mute () {
     this.muted = !this.muted;
     this.muted ? this.element.className += ' muted' : this.element.className = 'musician';
-    this.soundFactory.mute(this.sound, this.muted);
   }
 
   createElement (avatar) {

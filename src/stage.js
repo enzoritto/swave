@@ -20,7 +20,8 @@ import './assets/svg/dropdown.svg';
 export default class Stage {
   constructor (musiciansElement) {
     this.musicians = [];
-    this.instruments = ['piano', 'drums', 'guitar'];
+    this.instrumentNames = ['acoustic_grand_piano', 'synth_drum', 'electric_guitar_clean'];
+    this.instruments = ['piano', 'drums', 'guitar']
     this.avatars = ['1', '2', '3'];
     this.musiciansElement = musiciansElement;
     this.isPlaying = false;
@@ -33,6 +34,7 @@ export default class Stage {
     this.playButton.disabled = false;
     this.pauseButton.disabled = true;
     this.stopButton.disabled = true;
+
     tooltip('[data-tippy-content]', { delay: [800, 100] });
 
     this.playButton.addEventListener('click', () => {
@@ -68,7 +70,7 @@ export default class Stage {
       button.id = this.instruments[i];
       button.innerHTML = '<img src="images/'+ this.instruments[i] +'.png">';
       button.addEventListener('click', () => {
-          this.createMusician('audio/' + this.instruments[i], this.avatars[i]);
+          this.createMusician(this.instrumentNames[i], this.avatars[i]);
       });
       return button;
     });

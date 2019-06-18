@@ -1,7 +1,8 @@
 import './style.scss';
-import 'assets/favicon.png';
+import './assets/favicon.png';
 import Musician from './musician';
 import Stage from './stage';
+import * as soundfont from 'soundfont-player';
 
 function init () {
   const musiciansElement = document.getElementsByClassName('musicians-container')[0];
