@@ -1,5 +1,8 @@
 # Changelog
 
+## AB v0.4
+* Added adding musicians
+
 ## AB v0.3
 * Added mute functionality
 * Added keyboard shortcuts

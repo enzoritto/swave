@@ -1,16 +1,17 @@
-# Current Iteration Backlog (v0.2)
+# Current Iteration Backlog (v0.5)
 
-* [ ] Be able to solo an instrument
-* [ ] Add the instruments (instead of them being instaciated by default)
+* Add single note sequencer
+* Add one sequencer per musician
+* Add more notes to sequencers
+  ---BONUS---
+* Change global tempo
+* Change global volume
 
 # Product Backlog
 
 * Remove an instrument
-* Change the tempo
+* Add note length to sequencers
+* Add note velocity to sequencers
 * Add characters illustrations (musicians)
 * Add character animations
-* Change volume
-* Add single note midi editor
-* Add more notes to midi editor
-* Add note length to midi editor
-* Add note velocity to midi editor
+* Add musician solo
