@@ -4,16 +4,17 @@ import Musician from './musician';
 import './assets/icons/drums.png';
 import './assets/icons/piano.png';
 import './assets/icons/guitar.png';
-import './assets/svg/plus.svg';
+import './assets/svg/add-button.svg';
 import './assets/svg/play.svg';
 import './assets/svg/source.svg';
 import './assets/svg/pause.svg';
 import './assets/svg/stop.svg';
 import './assets/svg/menu.svg';
 import './assets/svg/dropdown.svg';
+import './assets/svg/logo.svg';
 
 export default class Stage {
-  constructor (musiciansElement) {
+  constructor (audioContext, musiciansElement) {
     this.musicians = [];
     this.instrumentNames = ['acoustic_grand_piano', 'synth_drum', 'electric_guitar_clean'];
     this.instruments = ['piano', 'drums', 'guitar']
@@ -23,10 +24,11 @@ export default class Stage {
     this.playButton = document.getElementById('play-button');
     this.pauseButton = document.getElementById('pause-button');
     this.stopButton = document.getElementById('stop-button');
+    this.audioContext = audioContext;
   }
 
   initToolbar () {
-    this.playButton.disabled = false;
+    this.playButton.disabled = true;
     this.pauseButton.disabled = true;
     this.stopButton.disabled = true;
 
@@ -58,7 +60,6 @@ export default class Stage {
   initStage () {
     this.musicianButton = document.createElement('button');
     this.musicianButton.className = 'musician-button';
-    this.musicianButton.innerHTML = '<img src="images/plus.svg"></img>';
     this.instrumentButtons = Array(this.instruments.length).fill().map((_, i) => {
       let button = document.createElement('button');
       button.className = 'instrument-button';
@@ -80,17 +81,18 @@ export default class Stage {
       trigger: 'click',
       arrow: true,
       arrowType: 'sharp',
-      placement: 'bottom',
+      placement: 'right',
       interactive: true,
       content: this.musicianButtonContent
     });
     this.musiciansElement.appendChild(this.musicianButton);
   }
 
-  createMusician (audioPath, color) {
-    let musician = new Musician(audioPath, color);
+  createMusician (instrument, color) {
+    let musician = new Musician(this.audioContext, instrument, color);
     musician.display(this.musiciansElement);
     this.musicians.push(musician);
+    this.playButton.disabled = false;
   }
 
   play () {

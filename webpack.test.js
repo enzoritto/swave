@@ -1,7 +1,9 @@
 const path = require('path');
+const common = require('./webpack.common');
+const merge = require('webpack-merge');
 const webpack = require('webpack');
 
-module.exports = {
+module.exports = merge(common, {
   mode: 'development',
   entry: './all-tests.js',
   output: {
@@ -14,4 +16,4 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({ expect: ['expect.js'] })
   ]
-};
+});

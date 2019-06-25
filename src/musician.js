@@ -1,9 +1,9 @@
 import * as soundfont from 'soundfont-player';
 
 export default class Musician {
-  constructor (instrument, avatar) {
+  constructor (audioContext, instrument, avatar) {
     this.state = 'stopped';
-    this.audioContext = new AudioContext();
+    this.audioContext = audioContext;
     this.instrument = soundfont.instrument(this.audioContext, instrument);
     this.bpm = 60/120;
     this.muted = false;
