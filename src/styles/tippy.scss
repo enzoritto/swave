@@ -1,12 +1,11 @@
 .tippy-tooltip.black-theme {
-  top: 0.5rem;
+  top: .4rem;
 
   border-radius: 0;
-  padding-top: 1.2rem;
-  height: 6rem;
 
   color: white;
-  background: url('/images/dropdown.svg');
+  background-image: url('/images/dropdown.svg');
+  background-color: transparent;
   background-size: contain;
   background-position: top;
   background-repeat: no-repeat;
@@ -17,3 +16,5 @@
 .tippy-tooltip.black-theme .tippy-backdrop { background-color: black; }
 
 .tippy-tooltip.black-theme .tippy-arrow { border: none; }
+
+.tippy-tooltip.black-theme .tippy-content { margin-top: -1rem; }

@@ -6,7 +6,8 @@ import * as soundfont from 'soundfont-player';
 
 function init () {
   const musiciansElement = document.getElementsByClassName('musicians-container')[0];
-  const stage = new Stage(musiciansElement);
+  const audioContext = new AudioContext();
+  const stage = new Stage(audioContext, musiciansElement);
 
   stage.initStage();
   stage.initToolbar();

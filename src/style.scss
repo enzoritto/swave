@@ -9,4 +9,8 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: $background;
+  background-image: url('/images/logo.svg');
+  background-position: 50% 8rem;
+  background-repeat: no-repeat;
+  background-size: 30rem;
 }
