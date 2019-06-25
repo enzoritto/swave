@@ -6,6 +6,7 @@ import './assets/icons/piano.png';
 import './assets/icons/guitar.png';
 import './assets/svg/plus.svg';
 import './assets/svg/play.svg';
+import './assets/svg/source.svg';
 import './assets/svg/pause.svg';
 import './assets/svg/stop.svg';
 import './assets/svg/menu.svg';
