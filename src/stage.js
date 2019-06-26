@@ -17,7 +17,7 @@ import './assets/audio/kick.wav';
 export default class Stage {
   constructor (musiciansElement) {
     this.musicians = [];
-    this.instruments = ['Synth', 'Sampler', 'Synth'];
+    this.instruments = ['Synth', 'Sampler', 'MembraneSynth'];
     this.instrumentOptions = [{}, {'C3': 'kick.wav'}, {}]
     this.avatars = ['1', '2', '3'];
     this.musiciansElement = musiciansElement;

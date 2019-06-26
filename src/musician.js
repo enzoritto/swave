@@ -1,4 +1,5 @@
 import Tone from 'tone';
+import Sequencer from './sequencer';
 
 export default class Musician {
   constructor (avatar, instrument, instrumentOptions) {
@@ -8,6 +9,7 @@ export default class Musician {
     this.muted = false;
     this.createElement(avatar);
     this.element.addEventListener('click', () => { this.mute(); });
+    this.sequencer = new Sequencer(document.getElementById('sequencer-body'), ['C3'], this.part);
   }
 
   createInstrument (type, options) {
@@ -24,14 +26,9 @@ export default class Musician {
   createPart () {
     let part = new Tone.Part((time, value) => {
       this.instrument.triggerAttackRelease(value.note, value.duration, time, value.velocity);
-    }, [
-      {'time': '0:0', 'note': 'C3', 'duration': '4n', 'velocity': 1},
-      {'time': '0:1', 'note': 'C3', 'duration': '4n', 'velocity': 1},
-      {'time': '0:1:3', 'note': 'C3', 'duration': '4n', 'velocity': 0.7},
-      {'time': '0:2', 'note': 'C3', 'duration': '4n', 'velocity': 1}
-    ]).start(0);
+    }, []).start(0);
     part.loop = true;
-    part.loopEnd = '1m';
+    part.loopEnd = '4m';
     return part;
   }
 
