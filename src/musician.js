@@ -1,47 +1,56 @@
-import * as soundfont from 'soundfont-player';
+import Tone from 'tone';
 
 export default class Musician {
-  constructor (audioContext, instrument, avatar) {
+  constructor (avatar, instrument, instrumentOptions) {
     this.state = 'stopped';
-    this.audioContext = audioContext;
-    this.instrument = soundfont.instrument(this.audioContext, instrument);
-    this.bpm = 60/120;
+    this.instrument = this.createInstrument(instrument, instrumentOptions);
+    this.part = this.createPart();
     this.muted = false;
     this.createElement(avatar);
     this.element.addEventListener('click', () => { this.mute(); });
-    this.notes = [{
-      time: 0,
-      note: 50
-    }, {
-      time: 1,
-      note: 53
-    }, {
-      time: 2,
-      note: 57
-    }, {
-      time: 3,
-      note: 60
-    }];
+  }
+
+  createInstrument (type, options) {
+    if (type === 'Sampler') {
+      return new Tone[type](options, {
+        'release': 1,
+        'curve': 'exponential',
+        'baseUrl': '/audio/'
+      }).toMaster();
+    }
+    return new Tone[type](options).toMaster();
+  }
+
+  createPart () {
+    let part = new Tone.Part((time, value) => {
+      this.instrument.triggerAttackRelease(value.note, value.duration, time, value.velocity);
+    }, [
+      {'time': '0:0', 'note': 'C3', 'duration': '4n', 'velocity': 1},
+      {'time': '0:1', 'note': 'C3', 'duration': '4n', 'velocity': 1},
+      {'time': '0:1:3', 'note': 'C3', 'duration': '4n', 'velocity': 0.7},
+      {'time': '0:2', 'note': 'C3', 'duration': '4n', 'velocity': 1}
+    ]).start(0);
+    part.loop = true;
+    part.loopEnd = '1m';
+    return part;
   }
 
   play () {
-    this.instrument.then((player) => {
-      player.schedule(this.audioContext.currentTime, this.notes);
-    });
+    Tone.Transport.start();
   }
 
   pause () {
+    Tone.Transport.pause();
   }
 
   stop () {
-    this.instrument.then((player) => {
-      player.stop();
-    });
+    Tone.Transport.stop();
   }
 
   mute () {
     this.muted = !this.muted;
     this.muted ? this.element.className += ' muted' : this.element.className = 'musician';
+    this.muted ? this.part.mute = true : this.part.mute = false;
   }
 
   createElement (avatar) {

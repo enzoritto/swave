@@ -12,19 +12,19 @@ import './assets/svg/stop.svg';
 import './assets/svg/menu.svg';
 import './assets/svg/dropdown.svg';
 import './assets/svg/logo.svg';
+import './assets/audio/kick.wav';
 
 export default class Stage {
-  constructor (audioContext, musiciansElement) {
+  constructor (musiciansElement) {
     this.musicians = [];
-    this.instrumentNames = ['acoustic_grand_piano', 'synth_drum', 'electric_guitar_clean'];
-    this.instruments = ['piano', 'drums', 'guitar']
+    this.instruments = ['Synth', 'Sampler', 'Synth'];
+    this.instrumentOptions = [{}, {'C3': 'kick.wav'}, {}]
     this.avatars = ['1', '2', '3'];
     this.musiciansElement = musiciansElement;
     this.isPlaying = false;
     this.playButton = document.getElementById('play-button');
     this.pauseButton = document.getElementById('pause-button');
     this.stopButton = document.getElementById('stop-button');
-    this.audioContext = audioContext;
   }
 
   initToolbar () {
@@ -60,19 +60,22 @@ export default class Stage {
   initStage () {
     this.musicianButton = document.createElement('button');
     this.musicianButton.className = 'musician-button';
-    this.instrumentButtons = Array(this.instruments.length).fill().map((_, i) => {
-      let button = document.createElement('button');
-      button.className = 'instrument-button';
-      button.id = this.instruments[i];
-      button.innerHTML = '<img src="images/'+ this.instruments[i] +'.png">';
+    this.musicianDropdownContent = document.createElement('div')
+    this.musicianDropdownContent.innerHTML = `
+      <button id="piano" class="instrument-button">
+        <img src="images/piano.png">
+      </button>
+      <button id="drums" class="instrument-button">
+        <img src="images/drums.png">
+      </button>
+      <button id="guitar" class="instrument-button">
+        <img src="images/guitar.png">
+      </button>
+    `;
+    Array.prototype.forEach.call(this.musicianDropdownContent.children, (button, i) => {
       button.addEventListener('click', () => {
-          this.createMusician(this.instrumentNames[i], this.avatars[i]);
+        this.createMusician(this.avatars[i], this.instruments[i], this.instrumentOptions[i]);
       });
-      return button;
-    });
-    this.musicianButtonContent = document.createElement('div');
-    this.instrumentButtons.forEach((button) => {
-      this.musicianButtonContent.appendChild(button);
     });
     tooltip(this.musicianButton, {
       theme: 'black',
@@ -83,13 +86,13 @@ export default class Stage {
       arrowType: 'sharp',
       placement: 'right',
       interactive: true,
-      content: this.musicianButtonContent
+      content: this.musicianDropdownContent
     });
-    this.musiciansElement.appendChild(this.musicianButton);
+    document.body.appendChild(this.musicianButton);
   }
 
-  createMusician (instrument, color) {
-    let musician = new Musician(this.audioContext, instrument, color);
+  createMusician (avatar, instrument, instrumentOptions) {
+    let musician = new Musician(avatar, instrument, instrumentOptions);
     musician.display(this.musiciansElement);
     this.musicians.push(musician);
     this.playButton.disabled = false;
