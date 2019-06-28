@@ -8,7 +8,6 @@ function init () {
   const stage = new Stage(musiciansElement);
 
   stage.initStage();
-  stage.initToolbar();
 }
 
 window.onload = init;
