@@ -4,6 +4,9 @@ table {
   width: 100%;
 }
 
+.active { display: block; }
+.inactive { display: none; }
+
 .note {
   box-sizing: border-box;
 

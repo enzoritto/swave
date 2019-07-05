@@ -7,6 +7,18 @@ export default class Sequencer {
     this.initNotes();
   }
 
+  hideRows () {
+    this.rows.forEach((row) => {
+      row.style.display = 'none';
+    });
+  }
+
+  revealRows () {
+    this.rows.forEach((row) => {
+      row.style.display = 'table-row';
+    });
+  }
+
   createNotes (parent, notes) {
     notes.forEach((note) => {
       console.log(parent);

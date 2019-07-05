@@ -1,0 +1,21 @@
+@import 'bulma/sass/utilities/_all.sass';
+@import 'bulma/sass/layout/hero.sass';
+
+@import url('https://fonts.googleapis.com/css?family=Knewave&display=swap');
+@import url('https://unpkg.com/normalize.css@8.0.1/normalize.css');
+
+@import './colors.scss';
+@import './toolbar.scss';
+@import './musicians.scss';
+@import './tippy.scss';
+@import './sequencer.scss';
+@import './misc.scss';
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $background;
+  background-image: url('/images/logo.svg');
+  background-position: 50% 8rem;
+  background-repeat: no-repeat;
+  background-size: 30rem;
+}

@@ -7,9 +7,11 @@ export default class Musician {
     this.instrument = this.createInstrument(instrument, instrumentOptions);
     this.part = this.createPart();
     this.muted = false;
+    this.toggledSequencer = false;
     this.createElement(avatar);
-    this.element.addEventListener('click', () => { this.mute(); });
-    this.sequencer = new Sequencer(document.getElementById('sequencer-body'), ['C3'], this.part);
+    this.sequencerEl = document.getElementById('sequencer-body');
+    this.sequencer = new Sequencer(this.sequencerEl, ['C3'], this.part);
+    this.sequencer.hideRows();
   }
 
   createInstrument (type, options) {
