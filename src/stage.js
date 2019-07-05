@@ -25,6 +25,9 @@ export default class Stage {
   }
 
   initStage () {
+    this.musicians.forEach((musician, i) => {
+      console.log('1');
+    });
     this.controlPanel.initControlPanel();
 
     this.musicianButton = document.createElement('button');
@@ -63,6 +66,17 @@ export default class Stage {
   createMusician (avatar, instrument, instrumentOptions) {
     let musician = new Musician(avatar, instrument, instrumentOptions);
     musician.display(this.musiciansElement);
+    musician.element.addEventListener('click', () => {
+      this.musicians.forEach((m, i) => {
+        if (i === this.musicians.indexOf(musician)) {
+          m.toggledSequencer = !m.toggledSequencer;
+          m.toggledSequencer ? m.sequencer.revealRows() : m.sequencer.hideRows();
+        } else {
+          m.toggledSequencer = false;
+          m.sequencer.hideRows();
+        }
+      });
+    });
     this.musicians.push(musician);
   }
 }
