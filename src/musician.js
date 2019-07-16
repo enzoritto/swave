@@ -5,12 +5,11 @@ export default class Musician {
   constructor (avatar, instrument, instrumentOptions) {
     this.state = 'stopped';
     this.instrument = this.createInstrument(instrument, instrumentOptions);
-    this.part = this.createPart();
     this.muted = false;
     this.toggledSequencer = false;
     this.createElement(avatar);
     this.sequencerEl = document.getElementById('sequencer-body');
-    this.sequencer = new Sequencer(this.sequencerEl, ['C3'], this.part);
+    this.sequencer = new Sequencer(this.sequencerEl, ['C5', 'D5', 'E5'], this.instrument);
     this.sequencer.hideRows();
   }
 
@@ -22,16 +21,12 @@ export default class Musician {
         'baseUrl': '/audio/'
       }).toMaster();
     }
-    return new Tone[type](options).toMaster();
-  }
-
-  createPart () {
-    let part = new Tone.Part((time, value) => {
-      this.instrument.triggerAttackRelease(value.note, value.duration, time, value.velocity);
-    }, []).start(0);
-    part.loop = true;
-    part.loopEnd = '4m';
-    return part;
+    return new Tone.PolySynth(4, Tone[type]).set({
+      oscillator : {
+        type : 'sine'
+      },
+      envelope : { attack : 0.005, decay : 0.1, sustain : 0.3, release : 1 }
+    }).toMaster();
   }
 
   play () {
