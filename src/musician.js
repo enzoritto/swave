@@ -9,24 +9,17 @@ export default class Musician {
     this.toggledSequencer = false;
     this.createElement(avatar);
     this.sequencerEl = document.getElementById('sequencer-body');
-    this.sequencer = new Sequencer(this.sequencerEl, ['C5', 'D5', 'E5'], this.instrument);
+    this.sequencer = new Sequencer(this.sequencerEl, ['c3', 'D4', 'E4'], this.instrument);
     this.sequencer.hideRows();
   }
 
   createInstrument (type, options) {
-    if (type === 'Sampler') {
-      return new Tone[type](options, {
-        'release': 1,
-        'curve': 'exponential',
-        'baseUrl': '/audio/'
-      }).toMaster();
+    if (Tone[type].prototype instanceof Tone.Monophonic) {
+      return new Tone.PolySynth(4, Tone[type]).set(options).toMaster();
+    } else {
+      console.log(Tone[type]);
+      return new Tone[type](options).toMaster();
     }
-    return new Tone.PolySynth(4, Tone[type]).set({
-      oscillator : {
-        type : 'sine'
-      },
-      envelope : { attack : 0.005, decay : 0.1, sustain : 0.3, release : 1 }
-    }).toMaster();
   }
 
   play () {
