@@ -9,30 +9,36 @@
     <a id="source-code-link" href="https://github.com/zoford/awesome-band">
       <img src="/images/source.svg">
     </a>
+    <div class="dropdown">
+      <button class="add-button"><img src="/images/add.svg"></button>
+      <div class="content">
+        <div class="content-arrow"></div>
+        <button class="option">Sine</button>
+        <button class="option">White Noise</button>
+        <button class="option">Triangle</button>
+      </div>
+    </div>
     <div class="musicians-container"></div>
     <table>
       <tbody id="sequencer-body"></tbody>
     </table>
     <div id="toolbar">
       <div>
-        <label id="bpm-label" for="bpm-input">BPM</label>
-        <input id="bpm-input" name="bpm-input" value="70"></input>
+        <img id="bpm-icon" src="/images/bpm.svg">
+        <input id="bpm-input" name="bpm-input" value="120"></input>
       </div>
       <div>
         <button data-tippy-content="Play (space-bar)" id="play-button" class="play button">
           <img src="/images/play.svg">
         </button>
-        <button data-tippy-content="Pause (space-bar)" id="pause-button" class="pause button">
+        <button data-tippy-content="Pause (space-bar)" id="pause-button" class="pause button" disabled>
           <img src="/images/pause.svg">
         </button>
-        <button data-tippy-content="Stop (ESC)" id="stop-button" class="stop button">
+        <button data-tippy-content="Stop (ESC)" id="stop-button" class="stop button" disabled>
           <img src="/images/stop.svg">
         </button>
       </div>
       <div>
-        <button class="settings button">
-          <img src="/images/menu.svg">
-        </button>
       </div>
     </div>
   </body>
