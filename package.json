@@ -1,5 +1,5 @@
 {
-  "name": "awesome-band",
+  "name": "swave",
   "version": "0.4.0",
   "description": "A music creation webapp",
   "main": "index.js",
@@ -35,12 +35,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EnzoCranford/awesome-band.git"
+    "url": "git+https://github.com/EnzoCranford/swave.git"
   },
   "author": "Enzo Cranford",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/EnzoCranford/awesome-band/issues"
+    "url": "https://github.com/EnzoCranford/swave/issues"
   },
-  "homepage": "https://github.com/EnzoCranford/awesome-band#readme"
+  "homepage": "https://github.com/EnzoCranford/swave#readme"
 }
