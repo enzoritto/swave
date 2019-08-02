@@ -1,24 +1,18 @@
 import tooltip from 'tippy.js';
 import Musician from './musician';
 import ControlPanel from './control-panel';
-import './assets/icons/drums.png';
-import './assets/icons/piano.png';
-import './assets/icons/guitar.png';
-import './assets/svg/add-button.svg';
-import './assets/svg/play.svg';
-import './assets/svg/source.svg';
-import './assets/svg/pause.svg';
-import './assets/svg/stop.svg';
-import './assets/svg/menu.svg';
-import './assets/svg/dropdown.svg';
-import './assets/svg/logo.svg';
-import './assets/audio/kick.wav';
+import './assets/icons/play.svg';
+import './assets/icons/pause.svg';
+import './assets/icons/stop.svg';
+import './assets/icons/add.svg';
+import './assets/icons/bpm.svg';
+import './assets/icons/source.svg';
 
 export default class Stage {
   constructor (musiciansElement) {
     this.musicians = [];
-    this.instruments = ['Synth', 'Sampler', 'MembraneSynth'];
-    this.instrumentOptions = [{}, {'C3': 'kick.wav'}, {}]
+    this.instruments = ['Synth', 'NoiseSynth', 'Synth'];
+    this.instrumentOptions = [{ oscillator: { type: 'sine' } }, { noise: { type: 'white' } }, { oscillator: { type: 'triangle' } }];
     this.avatars = ['1', '2', '3'];
     this.musiciansElement = musiciansElement;
     this.controlPanel = new ControlPanel(this.musicians);
@@ -29,38 +23,19 @@ export default class Stage {
       console.log('1');
     });
     this.controlPanel.initControlPanel();
-
-    this.musicianButton = document.createElement('button');
-    this.musicianButton.className = 'musician-button';
-    this.musicianDropdownContent = document.createElement('div')
-    this.musicianDropdownContent.innerHTML = `
-      <button id="piano" class="instrument-button">
-        <img src="images/piano.png">
-      </button>
-      <button id="drums" class="instrument-button">
-        <img src="images/drums.png">
-      </button>
-      <button id="guitar" class="instrument-button">
-        <img src="images/guitar.png">
-      </button>
-    `;
-    Array.prototype.forEach.call(this.musicianDropdownContent.children, (button, i) => {
-      button.addEventListener('click', () => {
+    let dropdownContent = document.getElementsByClassName('content')[0];
+    document.getElementsByClassName('add-button')[0].addEventListener('click', () => {
+      if (dropdownContent.classList.contains('show')) {
+        dropdownContent.classList.remove('show');
+      } else {
+        dropdownContent.classList.add('show');
+      }
+    });
+    Array.prototype.forEach.call(document.getElementsByClassName('option'), (option, i) => {
+      option.addEventListener('click', () => {
         this.createMusician(this.avatars[i], this.instruments[i], this.instrumentOptions[i]);
       });
     });
-    tooltip(this.musicianButton, {
-      theme: 'black',
-      animateFill: false,
-      animation: 'scale',
-      trigger: 'click',
-      arrow: true,
-      arrowType: 'sharp',
-      placement: 'right',
-      interactive: true,
-      content: this.musicianDropdownContent
-    });
-    document.body.appendChild(this.musicianButton);
   }
 
   createMusician (avatar, instrument, instrumentOptions) {

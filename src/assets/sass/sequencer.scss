@@ -1,0 +1,28 @@
+table {
+  position: absolute;
+  bottom: 4rem;
+  width: 100%;
+}
+
+.active { display: block; }
+.inactive { display: none; }
+
+.note {
+  box-sizing: border-box;
+
+  width: 2.5rem;
+  height: 3rem;
+}
+
+.note.header {
+  font-family: 'Rubik', sans-serif;
+  width: 2.5rem;
+  text-transform: uppercase;
+}
+
+.note.off { background-color: #D9D9D9; }
+
+tr .note.header { background-color: $white; color: lighten($black, 80%); }
+tr .note.on { background-color: $primary; border: 3px solid darken($primary, 5%); }
+
+tr:nth-child(2n) .note.header { background-color: $black; color: darken($white, 80%); }
