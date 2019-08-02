@@ -9,7 +9,7 @@ export default class Musician {
     this.toggledSequencer = false;
     this.createElement(avatar);
     this.sequencerEl = document.getElementById('sequencer-body');
-    this.sequencer = new Sequencer(this.sequencerEl, ['c3', 'D4', 'E4'], this.instrument);
+    this.sequencer = new Sequencer(this.sequencerEl, ['C3', 'D4', 'E4'], this.instrument);
     this.sequencer.hideRows();
   }
 
@@ -17,7 +17,6 @@ export default class Musician {
     if (Tone[type].prototype instanceof Tone.Monophonic) {
       return new Tone.PolySynth(4, Tone[type]).set(options).toMaster();
     } else {
-      console.log(Tone[type]);
       return new Tone[type](options).toMaster();
     }
   }
