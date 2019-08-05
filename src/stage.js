@@ -12,7 +12,7 @@ export default class Stage {
   constructor (musiciansElement) {
     this.musicians = [];
     this.instruments = ['Synth', 'NoiseSynth', 'Synth'];
-    this.instrumentOptions = [{ oscillator: { type: 'sine' } }, { noise: { type: 'white' } }, { oscillator: { type: 'triangle' } }];
+    this.instrumentOptions = [{ oscillator: { type: 'sine' } }, {}, { oscillator: { type: 'triangle' } }];
     this.avatars = ['1', '2', '3'];
     this.musiciansElement = musiciansElement;
     this.controlPanel = new ControlPanel(this.musicians);
@@ -23,14 +23,19 @@ export default class Stage {
       console.log('1');
     });
     this.controlPanel.initControlPanel();
+
     let dropdownContent = document.getElementsByClassName('content')[0];
     document.getElementsByClassName('add-button')[0].addEventListener('click', () => {
-      if (dropdownContent.classList.contains('show')) {
-        dropdownContent.classList.remove('show');
-      } else {
-        dropdownContent.classList.add('show');
-      }
+      dropdownContent.classList.toggle('show');
     });
+    window.onclick = function(event) {
+      if (!event.target.matches('.add-button')) {
+        if (dropdownContent.classList.contains('show')) {
+          dropdownContent.classList.remove('show');
+        }
+      }
+    }
+
     Array.prototype.forEach.call(document.getElementsByClassName('option'), (option, i) => {
       option.addEventListener('click', () => {
         this.createMusician(this.avatars[i], this.instruments[i], this.instrumentOptions[i]);

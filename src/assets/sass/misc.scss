@@ -14,10 +14,13 @@
   display: inline-block;
   height: 64px;
   & .add-button {
-    background: none;
     border: none;
+    width: 4rem;
+    height: 4rem;
     padding: 0;
-    & img { width: 4rem }
+    background-image: url(/images/add.svg);
+    background-size: contain;
+    background-color: transparent;
     &:hover { cursor: pointer; }
   }
   & .content {
