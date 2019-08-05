@@ -65,11 +65,9 @@ export default class Stage {
         m.toggledSequencer = !m.toggledSequencer;
         m.toggledSequencer ? m.sequencer.revealRows() : m.sequencer.hideRows();
         if (m.toggledSequencer) {
-          this.toolbarElement.classList.add('edit-mode');
-          this.musiciansElement.classList.add('edit-mode');
+          document.body.classList.add('edit-mode');
         } else {
-          this.toolbarElement.classList.remove('edit-mode');
-          this.musiciansElement.classList.remove('edit-mode');
+          document.body.classList.remove('edit-mode');
         }
       } else {
         m.toggledSequencer = false;
