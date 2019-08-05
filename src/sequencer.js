@@ -42,7 +42,6 @@ export default class Sequencer {
       this.sequences[i].loopEnd = '4m';
       this.sequences[i].loopStart = 0;
       this.sequences[i].humanize = true;
-      console.log(this.sequences[i].length);
       Array.prototype.forEach.call(row.children, (e, j) => {
         if (e.classList.contains('note')) {
           e.addEventListener('click', () => {
