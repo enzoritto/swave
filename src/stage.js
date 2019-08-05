@@ -53,6 +53,9 @@ export default class Stage {
     musician.editButton.addEventListener('click', () => {
       this.toggleSequencer(musician);
     });
+    musician.muteButton.addEventListener('click', () => {
+      musician.mute();
+    });
     this.musicians.push(musician);
   }
 

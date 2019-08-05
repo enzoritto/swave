@@ -36,19 +36,33 @@ export default class Musician {
   mute () {
     this.muted = !this.muted;
     this.muted ? this.element.className += ' muted' : this.element.className = 'musician';
-    this.muted ? this.part.mute = true : this.part.mute = false;
+    this.muted ? this.muteSequences() : this.unmuteSequences();
+  }
+
+  muteSequences () {
+    this.sequencer.sequences.forEach((sequence) => {
+      sequence.mute = true;
+    });
+  }
+
+  unmuteSequences () {
+    this.sequencer.sequences.forEach((sequence) => {
+      sequence.mute = false;
+    });
   }
 
   createElement (graphic) {
     this.element = document.createElement('div');
     this.editButton = document.createElement('button');
     this.editButton.className = 'edit-button';
+    this.muteButton = document.createElement('button');
+    this.muteButton.className = 'mute-button';
     this.element.className = 'musician';
     this.element.innerHTML = `
-      <button class="mute-button"></button>
       <div class=${graphic}></div>
     `;
     this.element.append(this.editButton);
+    this.element.append(this.muteButton);
   }
 
   display (parent) {
