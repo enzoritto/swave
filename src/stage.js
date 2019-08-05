@@ -33,7 +33,7 @@ export default class Stage {
       dropdownContent.classList.toggle('show');
     });
     window.onclick = function(event) {
-      if (!event.target.matches('.add-button')) {
+      if (!event.target.matches('.add-button') && !event.target.matches('.option')) {
         if (dropdownContent.classList.contains('show')) {
           dropdownContent.classList.remove('show');
         }
