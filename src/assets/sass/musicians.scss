@@ -1,12 +1,89 @@
 .musician {
-  border-radius: 50%;
-  width: 6rem;
-  height: 6rem;
+  border: 1rem solid darken($white, 15%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 13rem;
+  height: 20rem;
   margin: 1rem;
 
-  background-size: contain;
+  background-color: darken($white, 10%);
 
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+  & .triangle {
+    width: 0;
+    height: 0;
+    border-left: 3.5rem solid transparent;
+    border-right: 3.5rem solid transparent;
+    border-bottom: 7rem solid $black;
+  }
+  & .circle {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    background-color: $black;
+  }
+  & .square {
+    width: 7rem;
+    height: 7rem;
+    background-color: $black;
+  }
+  & .mute-button {
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-image: url(/images/mute.svg);
+    background-size: contain;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  & .edit-button {
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-image: url(/images/note.svg);
+    background-size: contain;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.musicians-container.edit-mode {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  & .musician {
+    border: none;
+    margin: 0 0.5rem 0 0.5rem;
+    width: 7rem;
+    height: 6rem;
+
+    & .triangle { transform: scale(.4); }
+    & .circle { transform: scale(.4); }
+    & .square { transform: scale(.4); }
+    & .mute-button {
+      top: 0.3rem;
+      left: 0.3rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    & .edit-button {
+      top: 0.3rem;
+      right: 0.3rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
 }
 
 .muted { opacity: 0.3; }
@@ -18,5 +95,4 @@
   display: flex;
   max-width: 80vw;
   margin: 0 auto;
-  margin-top: 30vh;
 }

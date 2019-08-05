@@ -7,15 +7,19 @@ import './assets/icons/stop.svg';
 import './assets/icons/add.svg';
 import './assets/icons/bpm.svg';
 import './assets/icons/source.svg';
+import './assets/icons/mute.svg';
+import './assets/icons/note.svg';
 
 export default class Stage {
   constructor (musiciansElement) {
     this.musicians = [];
-    this.instruments = ['Synth', 'NoiseSynth', 'Synth'];
+    this.instruments = ['Synth', 'AMSynth', 'Synth'];
     this.instrumentOptions = [{ oscillator: { type: 'sine' } }, {}, { oscillator: { type: 'triangle' } }];
-    this.avatars = ['1', '2', '3'];
+    this.graphics = ['triangle', 'circle', 'square'];
     this.musiciansElement = musiciansElement;
     this.controlPanel = new ControlPanel(this.musicians);
+    this.view = 'stage';
+    this.toolbarElement = document.getElementById('toolbar');
   }
 
   initStage () {
@@ -38,25 +42,36 @@ export default class Stage {
 
     Array.prototype.forEach.call(document.getElementsByClassName('option'), (option, i) => {
       option.addEventListener('click', () => {
-        this.createMusician(this.avatars[i], this.instruments[i], this.instrumentOptions[i]);
+        this.createMusician(this.graphics[i], this.instruments[i], this.instrumentOptions[i]);
       });
     });
   }
 
-  createMusician (avatar, instrument, instrumentOptions) {
-    let musician = new Musician(avatar, instrument, instrumentOptions);
+  createMusician (graphic, instrument, instrumentOptions) {
+    let musician = new Musician(graphic, instrument, instrumentOptions);
     musician.display(this.musiciansElement);
-    musician.element.addEventListener('click', () => {
-      this.musicians.forEach((m, i) => {
-        if (i === this.musicians.indexOf(musician)) {
-          m.toggledSequencer = !m.toggledSequencer;
-          m.toggledSequencer ? m.sequencer.revealRows() : m.sequencer.hideRows();
-        } else {
-          m.toggledSequencer = false;
-          m.sequencer.hideRows();
-        }
-      });
+    musician.editButton.addEventListener('click', () => {
+      this.toggleSequencer(musician);
     });
     this.musicians.push(musician);
+  }
+
+  toggleSequencer (musician) {
+    this.musicians.forEach((m, i) => {
+      if (i === this.musicians.indexOf(musician)) {
+        m.toggledSequencer = !m.toggledSequencer;
+        m.toggledSequencer ? m.sequencer.revealRows() : m.sequencer.hideRows();
+        if (m.toggledSequencer) {
+          this.toolbarElement.classList.add('edit-mode');
+          this.musiciansElement.classList.add('edit-mode');
+        } else {
+          this.toolbarElement.classList.remove('edit-mode');
+          this.musiciansElement.classList.remove('edit-mode');
+        }
+      } else {
+        m.toggledSequencer = false;
+        m.sequencer.hideRows();
+      }
+    });
   }
 }

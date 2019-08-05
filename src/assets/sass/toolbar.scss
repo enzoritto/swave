@@ -22,6 +22,10 @@
   & div:nth-of-type(1) { justify-content: start; }
   & div:nth-of-type(2) { justify-content: center; }
   & div:nth-of-type(3) { flex-direction: row-reverse; }
+
+  &.edit-mode {
+    top: 6rem;
+  }
 }
 
 #toolbar #bpm-icon {
