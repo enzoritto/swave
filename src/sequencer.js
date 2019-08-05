@@ -1,12 +1,12 @@
 import Tone from 'tone';
 
 export default class Sequencer {
-  constructor (parent, notes, instrument) {
+  constructor (parent, instrument) {
     this.rows = [];
     this.sequences = [];
-    this.notes = notes;
+    this.notes = ['C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3'].reverse();
     this.instrument = instrument;
-    this.createRows(parent, notes);
+    this.createRows(parent, this.notes);
     this.initRows();
   }
 
@@ -25,7 +25,11 @@ export default class Sequencer {
   createRows (parent, notes) {
     notes.forEach((note) => {
       let row = parent.appendChild(document.createElement('tr'));
-      row.insertAdjacentHTML('afterbegin', '<th class="note header">' + note + '</th>');
+      if (note.includes('#')) {
+        row.insertAdjacentHTML('afterbegin', '<th class="note header black">' + note + '</th>');
+      } else {
+        row.insertAdjacentHTML('afterbegin', '<th class="note header white">' + note + '</th>');
+      }
       for (let i = 0; i < 16; i++) {
         row.insertAdjacentHTML('beforeend', '<td class="note off"></td>');
       }

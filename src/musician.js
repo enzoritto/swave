@@ -9,7 +9,7 @@ export default class Musician {
     this.toggledSequencer = false;
     this.createElement(graphic);
     this.sequencerEl = document.getElementById('sequencer-body');
-    this.sequencer = new Sequencer(this.sequencerEl, ['C3', 'D4', 'E4'], this.instrument);
+    this.sequencer = new Sequencer(this.sequencerEl, this.instrument);
     this.sequencer.hideRows();
   }
 

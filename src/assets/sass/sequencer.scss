@@ -22,7 +22,7 @@ table {
 
 .note.off { background-color: #D9D9D9; }
 
-tr .note.header { background-color: $white; color: lighten($black, 80%); }
+tr .note.header.white { background-color: $white; color: lighten($black, 80%); }
 tr .note.on { background-color: $primary; }
 
-tr:nth-child(2n) .note.header { background-color: $black; color: darken($white, 80%); }
+tr .note.header.black { background-color: $black; color: darken($white, 80%); }
