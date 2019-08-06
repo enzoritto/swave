@@ -9,6 +9,36 @@
   }
 }
 
+.transport {
+  border: none;
+  border-radius: 50px;
+  background-color: #e6e6e6;
+  position: absolute;
+  width: 70%;
+  bottom: 5rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  &::-moz-progress-bar {
+    background-color: #209cee;
+    border-radius: 50px;
+  }
+}
+body.edit-mode .transport {
+  top: 10rem;
+  height: 2rem;
+  width: 93.90%;
+  margin: 0;
+  margin-left: auto;
+  border-radius: 0;
+
+  &::-moz-progress-bar {
+    border-radius: 0;
+  }
+}
+
 .dropdown {
   padding: 1rem 0 0 1rem;
   display: inline-block;

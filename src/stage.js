@@ -16,7 +16,7 @@ export default class Stage {
     this.musicians = [];
     this.instruments = ['Synth', 'AMSynth', 'Synth'];
     this.instrumentOptions = [{ oscillator: { type: 'sine' } }, {}, { oscillator: { type: 'triangle' } }];
-    this.graphics = ['triangle', 'circle', 'square'];
+    this.graphics = ['circle', 'square', 'triangle'];
     this.musiciansElement = musiciansElement;
     this.controlPanel = new ControlPanel(this.musicians);
     this.view = 'stage';
@@ -51,6 +51,16 @@ export default class Stage {
         this.createMusician(this.graphics[i], this.instruments[i], this.instrumentOptions[i]);
       });
     });
+
+    this.transportElement = document.getElementsByClassName('transport')[0];
+    Tone.Transport.loop = true;
+    Tone.Transport.loopStart = 0;
+    Tone.Transport.loopEnd = '4m';
+    Tone.Transport.scheduleRepeat((time) => {
+      Tone.Draw.schedule(() => {
+        this.transportElement.value = Tone.Transport.progress * 100;
+      }, time);
+    }, 0.05);
   }
 
   createMusician (graphic, instrument, instrumentOptions) {
