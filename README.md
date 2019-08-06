@@ -1,6 +1,6 @@
 # Swave
 
-Swave is a music creation webapp that aims to give the user a more enjoyable experience while allowing them to make good quality royalty-free music easily.
+Swave is a music creation webapp that allows you to create simple electronic music in your browser.
 
 # Getting Started
 
