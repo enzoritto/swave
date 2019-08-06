@@ -1,6 +1,6 @@
 # Swave
 
-Swave is a music creation webapp that aims to give the user a more enjoyable experience while allowing them to make good quality royalty-free music easily.
+Swave is a music creation webapp that allows you to create simple electronic music in your browser.
 
 # Getting Started
 
@@ -25,8 +25,6 @@ and then open `index.html` located in the newly generated `dist/` folder.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html)
