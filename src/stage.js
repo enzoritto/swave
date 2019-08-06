@@ -1,4 +1,5 @@
 import tooltip from 'tippy.js';
+import Tone from 'tone';
 import Musician from './musician';
 import ControlPanel from './control-panel';
 import './assets/icons/play.svg';
@@ -27,6 +28,11 @@ export default class Stage {
       console.log('1');
     });
     this.controlPanel.initControlPanel();
+
+    this.bpmInput = document.getElementById('bpm-input');
+    this.bpmInput.addEventListener('input', (e) => {
+      Tone.Transport.bpm.value = this.bpmInput.value;
+    });
 
     let dropdownContent = document.getElementsByClassName('content')[0];
     document.getElementsByClassName('add-button')[0].addEventListener('click', () => {
