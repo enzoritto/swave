@@ -10,6 +10,7 @@ import './assets/icons/bpm.svg';
 import './assets/icons/source.svg';
 import './assets/icons/mute.svg';
 import './assets/icons/note.svg';
+import './assets/icons/edit.png';
 
 export default class Stage {
   constructor (musiciansElement) {

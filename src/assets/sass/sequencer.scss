@@ -2,6 +2,7 @@ table {
   position: absolute;
   top: 12rem;
   width: 100%;
+  cursor: url(/images/edit.png) -30 30, pointer;
 }
 
 .active { display: block; }
