@@ -11,12 +11,13 @@ import './assets/icons/source.svg';
 import './assets/icons/mute.svg';
 import './assets/icons/note.svg';
 import './assets/icons/edit.png';
+const aJSON = require('./assets/presets/a.json');
 
 export default class Stage {
   constructor (musiciansElement) {
     this.musicians = [];
-    this.instruments = ['Synth', 'AMSynth', 'Synth'];
-    this.instrumentOptions = [{ oscillator: { type: 'sine' } }, {}, { oscillator: { type: 'triangle' } }];
+    this.instruments = ['DuoSynth', 'AMSynth', 'DuoSynth'];
+    this.instrumentOptions = [aJSON, {}, {}];
     this.graphics = ['circle', 'square', 'triangle'];
     this.musiciansElement = musiciansElement;
     this.controlPanel = new ControlPanel(this.musicians);
