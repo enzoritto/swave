@@ -8,8 +8,9 @@ export default class Musician {
     this.muted = false;
     this.toggledSequencer = false;
     this.createElement(graphic);
+    this.part = this.createPart();
     this.sequencerEl = document.getElementById('sequencer-body');
-    this.sequencer = new Sequencer(this.sequencerEl, this.instrument);
+    this.sequencer = new Sequencer(this.sequencerEl, this.instrument, this.part);
     this.sequencer.hideRows();
   }
 
@@ -19,6 +20,12 @@ export default class Musician {
     } else {
       return new Tone[type](options).toMaster();
     }
+  }
+
+  createPart () {
+    return new Tone.Part((time, value) => {
+      this.instrument.triggerAttackRelease(value.note, "8n", time, value.velocity);
+    }).start(0);
   }
 
   play () {
