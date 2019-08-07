@@ -29,7 +29,7 @@
 body.edit-mode .transport {
   top: 10rem;
   height: 2rem;
-  width: 93.90%;
+  width: calc(100% - 5.1rem);
   margin: 0;
   margin-left: auto;
   border-radius: 0;
