@@ -43,19 +43,7 @@ export default class Musician {
   mute () {
     this.muted = !this.muted;
     this.muted ? this.element.className += ' muted' : this.element.className = 'musician';
-    this.muted ? this.muteSequences() : this.unmuteSequences();
-  }
-
-  muteSequences () {
-    this.sequencer.sequences.forEach((sequence) => {
-      sequence.mute = true;
-    });
-  }
-
-  unmuteSequences () {
-    this.sequencer.sequences.forEach((sequence) => {
-      sequence.mute = false;
-    });
+    this.muted ? this.part.mute = true : this.part.mute = false;
   }
 
   createElement (graphic) {
