@@ -1,5 +1,6 @@
 import Tone from 'tone';
-import Sequencer from './sequencer';
+import ViewSequencer from './view/sequencer';
+import ModelSequencer from './model/sequencer';
 
 export default class Musician {
   constructor(graphic, instrument, instrumentOptions) {
@@ -10,8 +11,8 @@ export default class Musician {
     this.createElement(graphic);
     this.part = this.createPart();
     this.sequencersEl = document.getElementsByClassName('sequencers')[0];
-    this.sequencer = new Sequencer(this.sequencersEl, this.instrument, this.part);
-    this.sequencer.hideRows();
+    this.sequencer = new ViewSequencer(this.sequencersEl, this.instrument, this.part, 4, 4);
+    this.sequencer.hideSequencer();
     this.delay = ms => new Promise(res => setTimeout(res, ms));
   }
 
