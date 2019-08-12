@@ -11,21 +11,38 @@ import './assets/icons/source.svg';
 import './assets/icons/mute.svg';
 import './assets/icons/note.svg';
 import './assets/icons/edit.png';
-const aJSON = require('./assets/presets/a.json');
 
 export default class Stage {
-  constructor (musiciansElement) {
+  constructor(musiciansElement) {
     this.musicians = [];
-    this.instruments = ['DuoSynth', 'AMSynth', 'DuoSynth'];
-    this.instrumentOptions = [aJSON, {}, {}];
-    this.graphics = ['circle', 'square', 'triangle'];
+    this.instruments = ['Synth', 'Synth', 'Synth', 'Synth'];
+    this.instrumentOptions = [{
+      oscillator: {
+        type: "sine"
+      }
+    }, {
+      oscillator: {
+        type: "square"
+      },
+      volume: -13
+    }, {
+      oscillator: {
+        type: "triangle"
+      }
+    }, {
+      oscillator: {
+        type: "sawtooth"
+      },
+      volume: -13
+    }];
+    this.graphics = ['circle', 'square', 'triangle', 'triangle'];
     this.musiciansElement = musiciansElement;
     this.controlPanel = new ControlPanel(this.musicians);
     this.view = 'stage';
     this.toolbarElement = document.getElementById('toolbar');
   }
 
-  initStage () {
+  initStage() {
     this.musicians.forEach((musician, i) => {
       console.log('1');
     });
@@ -65,7 +82,7 @@ export default class Stage {
     }, 0.05);
   }
 
-  createMusician (graphic, instrument, instrumentOptions) {
+  createMusician(graphic, instrument, instrumentOptions) {
     let musician = new Musician(graphic, instrument, instrumentOptions);
     musician.display(this.musiciansElement);
     musician.editButton.addEventListener('click', () => {
@@ -77,7 +94,7 @@ export default class Stage {
     this.musicians.push(musician);
   }
 
-  toggleSequencer (musician) {
+  toggleSequencer(musician) {
     this.musicians.forEach((m, i) => {
       if (i === this.musicians.indexOf(musician)) {
         m.toggledSequencer = !m.toggledSequencer;

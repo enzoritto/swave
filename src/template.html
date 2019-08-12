@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Swave - Music creation webapp</title>
-    <link rel="shortcut icon" type="image/svg" href="/images/favicon.svg"/>
-  </head>
-  <body>
-    <a id="source-code-link" href="https://github.com/zoford/awesome-band">
-      <img src="/images/source.svg">
-    </a>
-    <div class="dropdown">
-      <button class="add-button"></button>
-      <div class="content">
-        <div class="content-arrow"></div>
-        <button class="option">Sine</button>
-        <button class="option">White Noise</button>
-        <button class="option">Triangle</button>
-      </div>
+
+<head>
+  <meta charset="utf-8">
+  <title>Swave - Music creation webapp</title>
+  <link rel="shortcut icon" type="image/svg" href="/images/favicon.svg" />
+</head>
+
+<body>
+  <a id="source-code-link" href="https://github.com/zoford/awesome-band">
+    <img src="/images/source.svg">
+  </a>
+  <div class="dropdown">
+    <button class="add-button"></button>
+    <div class="content">
+      <div class="content-arrow"></div>
+      <button class="option">Sine</button>
+      <button class="option">Square</button>
+      <button class="option">Triangle</button>
+      <button class="option">Sawtooth</button>
     </div>
-    <progress class="transport" max="100" value="0"></progress>
-    <div class="musicians-container"></div>
-    <table>
-      <tbody id="sequencer-body"></tbody>
-    </table>
-    <div id="toolbar">
-      <div>
-        <img id="bpm-icon" src="/images/bpm.svg">
-        <input id="bpm-input" name="bpm-input" value="120"></input>
-      </div>
-      <div>
-        <button data-tippy-content="Play (space-bar)" id="play-button" class="play button">
-          <img src="/images/play.svg">
-        </button>
-        <button data-tippy-content="Pause (space-bar)" id="pause-button" class="pause button" disabled>
-          <img src="/images/pause.svg">
-        </button>
-        <button data-tippy-content="Stop (ESC)" id="stop-button" class="stop button" disabled>
-          <img src="/images/stop.svg">
-        </button>
-      </div>
-      <div>
-      </div>
+  </div>
+  <progress class="transport" max="100" value="0"></progress>
+  <div class="musicians-container"></div>
+  <table>
+    <tbody id="sequencer-body"></tbody>
+  </table>
+  <div id="toolbar">
+    <div>
+      <img id="bpm-icon" src="/images/bpm.svg">
+      <input id="bpm-input" name="bpm-input" value="120"></input>
     </div>
-  </body>
+    <div>
+      <button data-tippy-content="Play (space-bar)" id="play-button" class="play button">
+        <img src="/images/play.svg">
+      </button>
+      <button data-tippy-content="Pause (space-bar)" id="pause-button" class="pause button" disabled>
+        <img src="/images/pause.svg">
+      </button>
+      <button data-tippy-content="Stop (ESC)" id="stop-button" class="stop button" disabled>
+        <img src="/images/stop.svg">
+      </button>
+    </div>
+    <div>
+    </div>
+  </div>
+</body>
+
 </html>
