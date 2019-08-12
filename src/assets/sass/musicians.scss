@@ -11,8 +11,14 @@
 
   background-color: darken($white, 10%);
 
-  & .graphic svg {
-    transform: scale(0.6);
+  & .graphic {
+    width: 6rem;
+    height: 6rem;
+
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
   }
   & .active {
     background-color: $accent;
@@ -53,7 +59,7 @@ body.edit-mode .musicians-container {
     width: 6rem;
     height: 6rem;
 
-    & .graphic svg { transform: scale(.25); }
+    & .graphic { width: 4rem; height: 4rem; }
     & .edit-button, .mute-button {
       position: absolute;
       left: 6.05rem;
