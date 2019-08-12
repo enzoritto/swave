@@ -15,7 +15,7 @@ import './assets/icons/edit.png';
 export default class Stage {
   constructor(musiciansElement) {
     this.musicians = [];
-    this.instruments = ['Synth', 'Synth', 'Synth', 'Synth'];
+    this.instruments = ['PolySynth', 'PolySynth', 'PolySynth', 'PolySynth'];
     this.instrumentOptions = [{
       oscillator: {
         type: "sine"

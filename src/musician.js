@@ -19,7 +19,7 @@ export default class Musician {
     if (Tone[type].prototype instanceof Tone.Monophonic) {
       return new Tone.PolySynth(4, Tone[type]).set(options).toMaster();
     } else {
-      return new Tone[type](options).toMaster();
+      return new Tone[type]().set(options).toMaster();
     }
   }
 
