@@ -1,7 +1,7 @@
 import Tone from 'tone';
 
 export default class Sequencer {
-  constructor (parent, instrument, part) {
+  constructor(parent, instrument, part) {
     this.rows = [];
     this.sequences = [];
     this.value = new Array(12 * 16);
@@ -12,21 +12,20 @@ export default class Sequencer {
     this.initRows();
   }
 
-  hideRows () {
-    this.rows.forEach((row) => {
-      row.style.display = 'none';
-    });
+  hideRows() {
+    this.sequencerEl.classList.remove('active');
   }
 
-  revealRows () {
-    this.rows.forEach((row) => {
-      row.style.display = 'table-row';
-    });
+  revealRows() {
+    this.sequencerEl.classList.add('active');
   }
 
-  createRows (parent, notes) {
+  createRows(parent, notes) {
+    this.sequencerEl = document.createElement('table');
+    this.sequencerEl.innerHTML = `<tbody></tbody>`;
+    parent.appendChild(this.sequencerEl);
     notes.forEach((note) => {
-      let row = parent.appendChild(document.createElement('tr'));
+      let row = document.createElement('tr');
       if (note.includes('#')) {
         row.insertAdjacentHTML('afterbegin', '<th class="note header black">' + note + '</th>');
       } else {
@@ -35,17 +34,21 @@ export default class Sequencer {
       for (let i = 0; i < 16; i++) {
         row.insertAdjacentHTML('beforeend', '<td class="note off"></td>');
       }
+      this.sequencerEl.children[0].appendChild(row);
       this.rows.push(row);
     });
   }
 
-  initRows () {
+  initRows() {
     this.rows.forEach((row, i) => {
       Array.prototype.forEach.call(row.children, (e, j) => {
         if (e.classList.contains('note')) {
           e.addEventListener('click', () => {
             if (e.classList.contains('off')) {
-              this.value.splice(j * i, 1, {"time": `0:${j - 1}`, "note": this.notes[i]});
+              this.value.splice(j * i, 1, {
+                "time": `0:${j - 1}`,
+                "note": this.notes[i]
+              });
               this.part.add(this.value[j * i]);
               this.instrument.triggerAttackRelease(this.notes[i], '8n');
               e.classList.replace('off', 'on');

@@ -9,8 +9,8 @@ export default class Musician {
     this.toggledSequencer = false;
     this.createElement(graphic);
     this.part = this.createPart();
-    this.sequencerEl = document.getElementById('sequencer-body');
-    this.sequencer = new Sequencer(this.sequencerEl, this.instrument, this.part);
+    this.sequencersEl = document.getElementsByClassName('sequencers')[0];
+    this.sequencer = new Sequencer(this.sequencersEl, this.instrument, this.part);
     this.sequencer.hideRows();
     this.delay = ms => new Promise(res => setTimeout(res, ms));
   }
