@@ -113,7 +113,7 @@ export default class Stage {
     this.musicians.forEach((m, i) => {
       if (i === this.musicians.indexOf(musician)) {
         m.toggledSequencer = !m.toggledSequencer;
-        m.toggledSequencer ? m.sequencer.revealRows() : m.sequencer.hideRows();
+        m.toggledSequencer ? m.sequencer.showSequencer() : m.sequencer.hideSequencer();
         if (m.toggledSequencer) {
           document.body.classList.add('edit-mode');
         } else {
@@ -121,7 +121,7 @@ export default class Stage {
         }
       } else {
         m.toggledSequencer = false;
-        m.sequencer.hideRows();
+        m.sequencer.hideSequencer();
       }
     });
   }
