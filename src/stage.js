@@ -35,7 +35,22 @@ export default class Stage {
       },
       volume: -13
     }];
-    this.graphics = ['circle', 'square', 'triangle', 'triangle'];
+    this.graphics = [
+      `<svg width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="100" fill="#000"/>
+      </svg>`,
+      `<svg width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#000" d="M0 0h200v200H0z"/>
+      </svg>`,
+      `<svg width="174" height="150" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M87 0l86.603 150H.397L87 0z" fill="#000"/>
+      </svg>`,
+      `<svg width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M128.814 69.201L179.661 200H77.966l50.848-130.798z" fill="#000"/>
+        <path d="M161.299 100.38L200 200h-77.401l38.7-99.62z" fill="#000"/>
+        <path d="M77.966 0l77.966 200H0L77.966 0z" fill="#000"/>
+      </svg>`
+    ];
     this.musiciansElement = musiciansElement;
     this.controlPanel = new ControlPanel(this.musicians);
     this.view = 'stage';

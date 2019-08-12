@@ -28,7 +28,7 @@ export default class Musician {
     this.editButton = document.createElement('button');
     this.editButton.className = 'edit-button';
     this.editButton.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path fill="none" d="M0 0h24v24H0z"/>
         <path d="M12 3v11l-2-1a4 4 0 1 0 4 4V7h4V3h-6z"/>
       </svg>
@@ -36,14 +36,15 @@ export default class Musician {
     this.muteButton = document.createElement('button');
     this.muteButton.className = 'mute-button';
     this.muteButton.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path fill="none" d="M0 0h24v24H0V0z"/>
         <path d="M3 9v6h4l5 5V4L7 9H3zm14 3c0-2-2-3-3-4v8c1-1 3-2 3-4zm-3-9v2a7 7 0 0 1 0 14v2a9 9 0 0 0 0-18z"/>
       </svg>
     `;
     this.element.className = 'musician';
     this.graphicEl = document.createElement('div');
-    this.graphicEl.className = graphic;
+    this.graphicEl.className = 'graphic';
+    this.graphicEl.innerHTML = graphic;
     this.element.append(this.graphicEl);
     this.element.append(this.editButton);
     this.element.append(this.muteButton);

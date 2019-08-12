@@ -11,23 +11,8 @@
 
   background-color: darken($white, 10%);
 
-  & .triangle {
-    width: 0;
-    height: 0;
-    border-left: 3.5rem solid transparent;
-    border-right: 3.5rem solid transparent;
-    border-bottom: 7rem solid $black;
-  }
-  & .circle {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    background-color: $black;
-  }
-  & .square {
-    width: 6rem;
-    height: 6rem;
-    background-color: $black;
+  & .graphic svg {
+    transform: scale(0.6);
   }
   & .active {
     background-color: $accent;
@@ -42,9 +27,14 @@
     width: 2rem;
     height: 2rem;
     position: absolute;
-    top: 2rem;
+    top: 1rem;
     cursor: pointer;
     background-color: transparent;
+
+    & svg {
+      width: 100%;
+      height: 100%;
+    }
   }
   & .mute-button { left: 1rem; }
   & .edit-button { right: 1rem; }
@@ -63,9 +53,7 @@ body.edit-mode .musicians-container {
     width: 6rem;
     height: 6rem;
 
-    & .triangle { transform: scale(.6); }
-    & .circle { transform: scale(.6); }
-    & .square { transform: scale(.6); }
+    & .graphic svg { transform: scale(.25); }
     & .edit-button, .mute-button {
       position: absolute;
       left: 6.05rem;
@@ -73,6 +61,10 @@ body.edit-mode .musicians-container {
       height: 2rem;
       background-color: #e6e6e6;
       border: 1px solid $white;
+      & svg {
+        width: 80%;
+        height: 80%;
+      }
     }
     & .edit-button { top: 0; }
     & .mute-button { top: 2rem; }
