@@ -21,7 +21,7 @@
     }
   }
   & .active {
-    background-color: $accent;
+    animation: pulse .2s;
   }
 
   & .edit-button, .mute-button {
@@ -89,6 +89,6 @@ body.edit-mode .musicians-container {
 }
 
 @keyframes pulse {
-  from { box-shadow: 0 0 0 0 $accent; }
-  to { box-shadow: 0 0 0 10px $accent; }
+  from { transform: scale(1) }
+  to { transform: scale(1.2) }
 }
