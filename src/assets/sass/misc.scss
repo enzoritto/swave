@@ -21,7 +21,7 @@
   margin-right: auto;
 
   &::-moz-progress-bar {
-    background-color: #209cee;
+    background-color: $accent;
     border-radius: 50px;
   }
 }
@@ -31,6 +31,7 @@ body.edit-mode .transport {
   width: calc(100% - 5.1rem);
   margin: 0;
   margin-left: auto;
+  margin-top: 0.15rem;
   border-radius: 0;
 
   &::-moz-progress-bar {

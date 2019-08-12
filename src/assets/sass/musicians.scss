@@ -19,40 +19,35 @@
     border-bottom: 7rem solid $black;
   }
   & .circle {
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     background-color: $black;
   }
   & .square {
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
     background-color: $black;
   }
-  & .mute-button {
+  & .active {
+    background-color: $accent;
+  }
+
+  & .edit-button, .mute-button {
+    display: block;
+    margin: auto;
+    padding: 0;
+    padding-top: 0.2rem;
     border: none;
     width: 2rem;
     height: 2rem;
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background-image: url(/images/mute.svg);
-    background-size: contain;
-    background-color: transparent;
+    top: 2rem;
     cursor: pointer;
-  }
-  & .edit-button {
-    border: none;
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background-image: url(/images/note.svg);
-    background-size: contain;
     background-color: transparent;
-    cursor: pointer;
   }
+  & .mute-button { left: 1rem; }
+  & .edit-button { right: 1rem; }
 }
 
 body.edit-mode .musicians-container {
@@ -64,25 +59,23 @@ body.edit-mode .musicians-container {
   margin-right: auto;
   & .musician {
     border: none;
-    margin: 0 0.5rem 0 0.5rem;
-    width: 7rem;
-    height: 7rem;
+    margin: 0 1.5rem 0 1.5rem;
+    width: 6rem;
+    height: 6rem;
 
-    & .triangle { transform: scale(.4); }
-    & .circle { transform: scale(.4); }
-    & .square { transform: scale(.4); }
-    & .mute-button {
-      top: 0.3rem;
-      left: 0.3rem;
-      width: 1.5rem;
-      height: 1.5rem;
+    & .triangle { transform: scale(.6); }
+    & .circle { transform: scale(.6); }
+    & .square { transform: scale(.6); }
+    & .edit-button, .mute-button {
+      position: absolute;
+      left: 6.05rem;
+      width: 2rem;
+      height: 2rem;
+      background-color: #e6e6e6;
+      border: 1px solid $white;
     }
-    & .edit-button {
-      top: 0.3rem;
-      right: 0.3rem;
-      width: 1.5rem;
-      height: 1.5rem;
-    }
+    & .edit-button { top: 0; }
+    & .mute-button { top: 2rem; }
   }
 }
 
@@ -95,4 +88,9 @@ body.edit-mode .musicians-container {
   display: flex;
   max-width: 80vw;
   margin: 0 auto;
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 0 0 $accent; }
+  to { box-shadow: 0 0 0 10px $accent; }
 }
