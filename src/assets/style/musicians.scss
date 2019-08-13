@@ -8,7 +8,10 @@
   height: 20rem;
   margin: 1rem;
 
-  background-color: darken($white, 10%);
+  &:nth-child(1n) { background-color: $red; }
+  &:nth-child(2n) { background-color: $blue; }
+  &:nth-child(3n) { background-color: $green; }
+  &:nth-child(4n) { background-color: $orange; }
 
   & .graphic {
     width: 6rem;
@@ -34,7 +37,7 @@
     position: absolute;
     top: 1rem;
     cursor: pointer;
-    background-color: transparent;
+    background-color: inherit;
 
     & svg {
       width: 100%;
@@ -64,7 +67,7 @@ body.edit-mode .musicians-container {
       left: 6.05rem;
       width: 2rem;
       height: 2rem;
-      background-color: #e6e6e6;
+      background-color: inherit;
       border: 1px solid $white;
       & svg {
         width: 80%;
