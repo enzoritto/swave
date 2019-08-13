@@ -1,7 +1,5 @@
 import Tone from 'tone';
 
-export const NOTE_CHANGE = 'noteOn';
-
 export default class Sequencer {
   constructor(instrument, part, notes, quarters, bars) {
     this.part = part;

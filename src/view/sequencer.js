@@ -1,5 +1,3 @@
-import Tone from 'tone';
-
 import SequencerModel from '../model/sequencer';
 
 export default class Sequencer {
@@ -63,8 +61,6 @@ export default class Sequencer {
     this.sequencer = document.createElement('table');
     this.sequencer.className = 'sequencer';
     let tableBody = document.createElement('tbody');
-    this.sequencer.append(tableBody);
-    parent.append(this.sequencer);
     notes.forEach((note) => {
       note.element = document.createElement('tr');
       if (note.name.includes('#')) {
@@ -81,7 +77,9 @@ export default class Sequencer {
         beat.className = 'note off';
         note.element.append(beat);
       }
-      this.sequencer.children[0].appendChild(note.element);
+      tableBody.appendChild(note.element);
+      this.sequencer.append(tableBody);
+      parent.append(this.sequencer);
     });
   }
 
@@ -107,9 +105,5 @@ export default class Sequencer {
 
   showSequencer() {
     this.sequencer.classList.add('active');
-  }
-
-  toggleBeat(element, oldClass, newClass) {
-    element.classList.replace(oldClass, newClass);
   }
 }
