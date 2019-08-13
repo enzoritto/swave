@@ -86,6 +86,7 @@ export default class Stage {
     this.controlPanel.initControlPanel();
 
     this.bpmInput = document.getElementById('bpm-input');
+    this.bpmInput.value = Tone.Transport.bpm.value;
     this.bpmInput.addEventListener('input', (e) => {
       Tone.Transport.bpm.value = this.bpmInput.value;
     });
