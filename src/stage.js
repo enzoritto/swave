@@ -11,15 +11,37 @@ import './assets/icons/source.svg';
 import './assets/icons/mute.svg';
 import './assets/icons/note.svg';
 import './assets/icons/edit.png';
+import './assets/sounds/drums/Kick.wav';
+import './assets/sounds/drums/Snare.wav';
+import './assets/sounds/drums/ClosedHH.wav';
+import './assets/sounds/drums/OpenHH.wav';
+import './assets/sounds/drums/Cowbell.wav';
+import './assets/sounds/drums/HiTom.wav';
+import './assets/sounds/drums/LowTom.wav';
+import './assets/sounds/drums/Maraca.wav';
+import './assets/sounds/drums/PedalHH.wav';
+import './assets/sounds/drums/RideClosed.wav';
+import './assets/sounds/drums/RideOpen.wav';
+import './assets/sounds/drums/Clap.wav';
+import './assets/sounds/c.wav';
 
 export default class Stage {
   constructor(musiciansElement) {
     this.musicians = [];
-    this.instruments = ['PolySynth', 'PolySynth', 'PolySynth', 'PolySynth'];
+    this.instruments = ['Sampler', 'PolySynth', 'PolySynth', 'PolySynth'];
     this.instrumentOptions = [{
-      oscillator: {
-        type: "sine"
-      }
+      "C3": "audio/Kick.wav",
+      "C#3": "audio/Snare.wav",
+      "D3": "audio/ClosedHH.wav",
+      "D#3": "audio/OpenHH.wav",
+      "E3": "audio/PedalHH.wav",
+      "F3": "audio/HiTom.wav",
+      "F#3": "audio/LowTom.wav",
+      "G3": "audio/RideClosed.wav",
+      "G#3": "audio/RideOpen.wav",
+      "A3": "audio/Clap.wav",
+      "A#3": "audio/Maraca.wav",
+      "B3": "audio/Cowbell.wav",
     }, {
       oscillator: {
         type: "square"
@@ -73,7 +95,7 @@ export default class Stage {
       dropdownContent.classList.toggle('show');
     });
     window.onclick = function(event) {
-      if (!event.target.matches('.add-button') && !event.target.matches('.option')) {
+      if (!event.target.matches('.add-button') && !event.target.matches('.option') && !event.target.matches('.ignore')) {
         if (dropdownContent.classList.contains('show')) {
           dropdownContent.classList.remove('show');
         }

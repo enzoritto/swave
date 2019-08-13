@@ -17,6 +17,9 @@ export default class Musician {
   }
 
   createInstrument(type, options) {
+    if (Tone[type] === Tone.Sampler) {
+      return new Tone.Sampler(options).toMaster();
+    }
     if (Tone[type].prototype instanceof Tone.Monophonic) {
       return new Tone.PolySynth(4, Tone[type]).set(options).toMaster();
     } else {
