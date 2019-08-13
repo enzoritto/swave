@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,700');
 @import url('https://unpkg.com/normalize.css@8.0.1/normalize.css');
-@import './assets/sass/colors.scss';
-@import './assets/sass/toolbar.scss';
-@import './assets/sass/musicians.scss';
-@import './assets/sass/tippy.scss';
-@import './assets/sass/sequencer.scss';
-@import './assets/sass/misc.scss';
+@import './assets/style/colors.scss';
+@import './assets/style/toolbar.scss';
+@import './assets/style/musicians.scss';
+@import './assets/style/tippy.scss';
+@import './assets/style/sequencer.scss';
+@import './assets/style/misc.scss';
 
 body {
   font-family: "Roboto", sans-serif;
