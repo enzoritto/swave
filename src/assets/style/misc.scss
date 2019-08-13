@@ -28,10 +28,9 @@
 body.edit-mode .transport {
   top: 10rem;
   height: 2rem;
-  width: calc(100% - 5.1rem);
+  width: ((100vw / 17) * 16);
   margin: 0;
-  margin-left: auto;
-  margin-top: 0.15rem;
+  margin-left: calc(100vw / 17);
   border-radius: 0;
 
   &::-moz-progress-bar {
