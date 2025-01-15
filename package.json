@@ -1,46 +1,21 @@
 {
   "name": "swave",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A music creation webapp",
-  "main": "index.js",
-  "dependencies": {},
+  "packageManager": "pnpm@9.15.4",
+  "main": "src/main.js",
   "devDependencies": {
-    "autoprefixer": "^9.6.1",
-    "clean-webpack-plugin": "^2.0.2",
-    "css-loader": "^2.1.1",
-    "expect.js": "^0.3.1",
-    "file-loader": "^3.0.1",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "jsdom": "^15.1.0",
-    "jsdom-global": "^3.0.2",
-    "mocha": "^6.2.0",
     "mousetrap": "^1.6.3",
-    "node-sass": "^4.12.0",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^7.2.0",
-    "style-loader": "^0.23.1",
-    "tippy.js": "^4.3.5",
-    "tone": "^13.4.9",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.8.0",
-    "webpack-merge": "^4.2.1"
+    "sass": "^1.83.4",
+    "tippy.js": "^6.3.7",
+    "tone": "^15.0.4",
+    "vite": "^6.0.7"
   },
   "scripts": {
-    "test": "webpack --config webpack.test.js && mocha tests_build/bundle.js --require jsdom-global/register",
-    "dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "now-build": "npm run build && rm -rf node_modules"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EnzoCranford/swave.git"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "author": "Enzo Cranford",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/EnzoCranford/swave/issues"
-  },
-  "homepage": "https://github.com/EnzoCranford/swave#readme"
+  "license": "GPL-3.0"
 }

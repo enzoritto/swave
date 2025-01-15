@@ -1,4 +1,4 @@
-import Tone from 'tone';
+import * as Tone from "tone";
 
 export default class Sequencer {
   constructor(instrument, part, notes, quarters, bars) {
@@ -10,11 +10,11 @@ export default class Sequencer {
 
   addNote(index, time, note) {
     this.value.splice(index, 1, {
-      "time": `0:${time}`,
-      "note": note
+      time: `0:${time}`,
+      note: note,
     });
     this.part.add(this.value[index]);
-    this.instrument.triggerAttackRelease(note, '8n');
+    this.instrument.triggerAttackRelease(note, "8n");
   }
 
   removeNote(index) {
