@@ -1,0 +1,14 @@
+@use "colors";
+@forward "toolbar";
+@forward "musicians";
+@forward "tippy";
+@forward "sequencer";
+@forward "misc";
+
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700");
+@import url("https://unpkg.com/normalize.css@8.0.1/normalize.css");
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: colors.$white;
+}

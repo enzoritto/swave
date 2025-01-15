@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Swave - Music creation webapp</title>
-  <link rel="shortcut icon" type="image/svg" href="/images/favicon.svg" />
+  <link rel="shortcut icon" type="image/svg" href="/src/assets/favicon.svg" />
 </head>
 
 <body>
@@ -32,23 +32,24 @@
   <div class="sequencers"></div>
   <div id="toolbar">
     <div>
-      <img id="bpm-icon" src="/images/bpm.svg">
+      <img id="bpm-icon" src="/src/assets/icons/bpm.svg">
       <input id="bpm-input" name="bpm-input" value="120"></input>
     </div>
     <div>
       <button data-tippy-content="Play (space-bar)" id="play-button" class="play button">
-        <img src="/images/play.svg">
+          <img src="/src/assets/icons/play.svg" />
       </button>
       <button data-tippy-content="Pause (space-bar)" id="pause-button" class="pause button" disabled>
-        <img src="/images/pause.svg">
+          <img src="/src/assets/icons/pause.svg" />
       </button>
       <button data-tippy-content="Stop (ESC)" id="stop-button" class="stop button" disabled>
-        <img src="/images/stop.svg">
+          <img src="/src/assets/icons/stop.svg" />
       </button>
     </div>
     <div>
     </div>
   </div>
-</body>
 
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>

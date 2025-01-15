@@ -1,0 +1,125 @@
+@use "colors";
+
+.musician {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 13rem;
+    height: 20rem;
+    margin: 1rem;
+
+    &:nth-child(1n) {
+        background-color: colors.$red;
+    }
+    &:nth-child(2n) {
+        background-color: colors.$blue;
+    }
+    &:nth-child(3n) {
+        background-color: colors.$green;
+    }
+    &:nth-child(4n) {
+        background-color: colors.$orange;
+    }
+
+    & .graphic {
+        width: 6rem;
+        height: 6rem;
+
+        & svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    & .active {
+        animation: pulse 0.2s;
+    }
+
+    & .edit-button,
+    .mute-button {
+        display: block;
+        margin: auto;
+        padding: 0;
+        padding-top: 0.2rem;
+        border: none;
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 1rem;
+        cursor: pointer;
+        background-color: inherit;
+
+        & svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    & .mute-button {
+        left: 1rem;
+    }
+    & .edit-button {
+        right: 1rem;
+    }
+}
+
+body.edit-mode .musicians-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    & .musician {
+        border: none;
+        margin: 0 1.5rem 0 1.5rem;
+        width: 6rem;
+        height: 6rem;
+
+        & .graphic {
+            width: 4rem;
+            height: 4rem;
+        }
+        & .edit-button,
+        .mute-button {
+            position: absolute;
+            left: 6.05rem;
+            width: 2rem;
+            height: 2rem;
+            background-color: inherit;
+            border: 1px solid colors.$white;
+            & svg {
+                width: 80%;
+                height: 80%;
+            }
+        }
+        & .edit-button {
+            top: 0;
+        }
+        & .mute-button {
+            top: 2rem;
+        }
+    }
+}
+
+.muted {
+    opacity: 0.3;
+}
+
+.musicians-container {
+    justify-content: center;
+    flex-wrap: wrap;
+
+    display: flex;
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}

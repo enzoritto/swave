@@ -1,0 +1,79 @@
+@use "colors";
+
+table {
+    display: none;
+    position: absolute;
+    top: 12rem;
+    width: 100%;
+    cursor:
+        url(/images/edit.png) -30 30,
+        pointer;
+    border-collapse: collapse;
+    z-index: 0;
+
+    &.active {
+        z-index: 1;
+    }
+}
+
+body.edit-mode table {
+    display: table;
+}
+
+.note {
+    border: 0.1rem solid white;
+    border-top: none;
+    border-left: none;
+    box-sizing: border-box;
+
+    width: 2.5rem;
+    height: 1rem;
+}
+
+.note.header {
+    font-family: "Rubik", sans-serif;
+    width: 2.5rem;
+    text-transform: uppercase;
+}
+
+.note.off,
+.note.on {
+    background-color: #d9d9d9;
+}
+
+tr .note.header.white {
+    background-color: colors.$white;
+    color: colors.$black;
+}
+tr .note.on {
+    background-color: colors.$primary;
+}
+
+tr .note.header.black {
+    background-color: colors.$black;
+    color: colors.$white;
+}
+
+table:nth-child(1n) {
+    tr .note.on {
+        background-color: colors.$red;
+    }
+}
+
+table:nth-child(2n) {
+    tr .note.on {
+        background-color: colors.$blue;
+    }
+}
+
+table:nth-child(3n) {
+    tr .note.on {
+        background-color: colors.$green;
+    }
+}
+
+table:nth-child(4n) {
+    tr .note.on {
+        background-color: colors.$orange;
+    }
+}
